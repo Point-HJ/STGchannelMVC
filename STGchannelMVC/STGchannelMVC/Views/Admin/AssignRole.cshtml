@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "AssignRole";
+}
+
+<h2>AssignRole</h2>
+
+@using (Html.BeginForm("AssignRole", "Admin", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <label class="control-label">User Name</label>
+            <input type="text" class="form-control" name="txtUserName" />
+        </div>
+        <div class="col-md-6">
+            <label class="control-label">Select Role</label>
+            @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select..");
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </div>
+}
+
