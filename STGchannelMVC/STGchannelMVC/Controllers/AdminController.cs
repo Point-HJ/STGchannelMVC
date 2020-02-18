@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -85,7 +87,7 @@ namespace STGchannelMVC.Controllers
             {
                 UserManager.AddToRole(user.Id, rolname);
             }
-            return RedirectToAction("CreateUser");
+            return RedirectToAction("Index");
         }
        
         public ActionResult CreateRole()
@@ -107,6 +109,7 @@ namespace STGchannelMVC.Controllers
             return View("Index");
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         public ActionResult AssignRole()
         {
             ViewBag.Roles = context.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList();
@@ -122,7 +125,34 @@ namespace STGchannelMVC.Controllers
             UserManager.AddToRole(user.Id, rolname);
             return View("Index");
         }
+        // GET: ApplicationUsers/Edit/5
+        //public ActionResult Edit(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ApplicationUser applicationUser = context.ApplicationUsers.Find(id);
+        //    if (applicationUser == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(applicationUser);
+        //}
 
+        //// POST: ApplicationUsers/Edit/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "Id,Password,CompanyName,CompanyID,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        context.Entry(applicationUser).State = EntityState.Modified;
+        //        context.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(applicationUser);
+        //}
 
 
         private void AddErrors(IdentityResult result)

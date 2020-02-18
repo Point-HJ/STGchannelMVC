@@ -49,15 +49,15 @@ namespace STGchannelMVC.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "CompanyID")]
+        [Display(Name = "Asiakasnumero")]
         public string CompanyID { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Salasana")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Muista salasana?")]
         public bool RememberMe { get; set; }
     }
 
