@@ -10,7 +10,20 @@ namespace STGchannelMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            if (User.IsInRole("Näytevalikoima-asiakas"))
+            {
+                return View("NV/Index.cshtml");
+            }
+            if (User.IsInRole("Logistiikka-asiakas"))
+            {
+                return View("Logistiikka/Index");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public ActionResult About()
