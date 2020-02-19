@@ -96,6 +96,7 @@ namespace STGchannelMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles ="SuperAdmin")]
         public ActionResult NewRole(FormCollection form)
         {
             string rolename = form["RoleName"];
@@ -125,35 +126,7 @@ namespace STGchannelMVC.Controllers
             UserManager.AddToRole(user.Id, rolname);
             return View("Index");
         }
-        // GET: ApplicationUsers/Edit/5
-        //public ActionResult Edit(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    ApplicationUser applicationUser = context.ApplicationUsers.Find(id);
-        //    if (applicationUser == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(applicationUser);
-        //}
-
-        //// POST: ApplicationUsers/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Password,CompanyName,CompanyID,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        context.Entry(applicationUser).State = EntityState.Modified;
-        //        context.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(applicationUser);
-        //}
-
+        
 
         private void AddErrors(IdentityResult result)
         {

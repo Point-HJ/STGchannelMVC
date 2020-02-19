@@ -3,11 +3,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lisää asiakas tai rooli</h2>
+<h2>Hallinta</h2>
 
 <ul>
-    <li>@Html.ActionLink("Luo asiakas", "CreateUser", "Admin")</li>
-    <li>@Html.ActionLink("Luo rooli", "CreateRole", "Admin")</li>
-    @*<li>@Html.ActionLink("Assign Role", "AssignRole", "Admin")</li>*@
+    <li>@Html.ActionLink("Lisää asiakas", "CreateUser", "Admin")</li>
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <li>@Html.ActionLink("Lisää rooli", "CreateRole", "Admin")</li>
+        <li>@Html.ActionLink("Assig Role", "AssignRole", "Admin")</li>
+    }
+
+    <li>@Html.ActionLink("Tuotteet", "Index", "Selections")</li>
+    <li>@Html.ActionLink("Lisää kausi", "Create", "Seasons")</li>
+    <li>@Html.ActionLink("Lisää kieli", "Create", "Languages")</li>
+
 </ul>
 
