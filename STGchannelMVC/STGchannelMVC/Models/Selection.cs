@@ -23,16 +23,8 @@ namespace STGchannelMVC.Models
         public Nullable<decimal> Price { get; set; }
         public string Season { get; set; }
         public string Language { get; set; }
-        public virtual Seasons Seasons { get; set; }
-        public virtual Language Languages { get; set; }
-
+       
 
     }
-    public class SelectionContext : DbContext
-    {
-        public DbSet<Selection> Selections { get; set; }
-        public DbSet<Language> Languages { get; set; }
-        public DbSet<Seasons> Seasons { get; set; }
-
-    }
+    
 }

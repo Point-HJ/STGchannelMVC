@@ -38,19 +38,17 @@ namespace STGchannelMVC.Controllers
         // GET: Selections/Create
         public ActionResult Create()
         {
-            //ViewBag.Language = db.Language.Select(l => new SelectListItem { Value = l.Language1, Text = l.Language1 }).ToList();
-            //ViewBag.Season = db.Seasons.Select(s => new SelectListItem { Value = s.Season, Text = s.Season }).ToList();
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season");
-            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1");
-            //return View("Create");
-            return View();
+            ViewBag.Language = db.Language.Select(l => new SelectListItem { Value = l.Language1, Text = l.Language1 }).ToList();
+            ViewBag.Season = db.Seasons.Select(s => new SelectListItem { Value = s.Season, Text = s.Season }).ToList();
+            
+            return View("Create");
         }
 
         // POST: Selections/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="Admin, SuperAdmin")]
-        public ActionResult Create(/*[Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")]*/ Selection selection)
+        public ActionResult Create([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] Selection selection)
         {
             if (ModelState.IsValid)
             {
@@ -58,9 +56,7 @@ namespace STGchannelMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season", selection.Season);
-            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1", selection.Language);
-
+           
             return View(selection);
         }
 
@@ -77,12 +73,9 @@ namespace STGchannelMVC.Controllers
             {
                 return HttpNotFound();
             }
-            
-            //ViewBag.Language = db.Language.Select(l => new SelectListItem { Value = l.Language1, Text = l.Language1 }).ToList();
+            ViewBag.LanguageList = new SelectList(db.Language.ToList(), "Language1", "Language1");
+            ViewBag.SeasonList = new SelectList(db.Seasons.ToList(), "Season", "Season");
 
-
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season");
-            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1");
 
             return View(selection);
         }
@@ -91,7 +84,7 @@ namespace STGchannelMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, SuperAdmin")]
-        public ActionResult Edit(/*[Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] */Selection selection)
+        public ActionResult Edit([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] Selection selection)
         {
                      
             if (ModelState.IsValid)
@@ -100,8 +93,7 @@ namespace STGchannelMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season", selection.Season);
-            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1", selection.Language);
+            
             return View(selection);
         }
 
