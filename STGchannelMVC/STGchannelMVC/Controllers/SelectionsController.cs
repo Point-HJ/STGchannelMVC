@@ -38,16 +38,19 @@ namespace STGchannelMVC.Controllers
         // GET: Selections/Create
         public ActionResult Create()
         {
+            //ViewBag.Language = db.Language.Select(l => new SelectListItem { Value = l.Language1, Text = l.Language1 }).ToList();
+            //ViewBag.Season = db.Seasons.Select(s => new SelectListItem { Value = s.Season, Text = s.Season }).ToList();
+            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season");
+            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1");
+            //return View("Create");
             return View();
         }
 
         // POST: Selections/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="Admin, SuperAdmin")]
-        public ActionResult Create([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] Selection selection)
+        public ActionResult Create(/*[Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")]*/ Selection selection)
         {
             if (ModelState.IsValid)
             {
@@ -55,9 +58,12 @@ namespace STGchannelMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season", selection.Season);
+            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1", selection.Language);
 
             return View(selection);
         }
+
 
         // GET: Selections/Edit/5
         public ActionResult Edit(int? id)
@@ -71,23 +77,31 @@ namespace STGchannelMVC.Controllers
             {
                 return HttpNotFound();
             }
+            
+            //ViewBag.Language = db.Language.Select(l => new SelectListItem { Value = l.Language1, Text = l.Language1 }).ToList();
+
+
+            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season");
+            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1");
+
             return View(selection);
         }
 
         // POST: Selections/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, SuperAdmin")]
-        public ActionResult Edit([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] Selection selection)
+        public ActionResult Edit(/*[Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] */Selection selection)
         {
+                     
             if (ModelState.IsValid)
             {
                 db.Entry(selection).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.SeasonID = new SelectList(db.Seasons, "SeasonID", "Season", selection.Season);
+            ViewBag.LangID = new SelectList(db.Language, "LangID", "Language1", selection.Language);
             return View(selection);
         }
 

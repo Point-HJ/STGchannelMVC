@@ -34,6 +34,6 @@ namespace STGchannelMVC.Models
             return new ApplicationDbContext();
         }
 
-        
+  
     }
 }

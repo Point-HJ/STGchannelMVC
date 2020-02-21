@@ -16,5 +16,6 @@ namespace STGchannelMVC.Models
     {
         public int LangID { get; set; }
         public string Language1 { get; set; }
+        public virtual ICollection<Selection> Selections { get; set; }
     }
 }

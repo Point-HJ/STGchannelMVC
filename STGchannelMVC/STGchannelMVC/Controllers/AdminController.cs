@@ -59,7 +59,7 @@ namespace STGchannelMVC.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            return View(context.Users.ToList());
         }
         public ActionResult CreateUser()
         {
