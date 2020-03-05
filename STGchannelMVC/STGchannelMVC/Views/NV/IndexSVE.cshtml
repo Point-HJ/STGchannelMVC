@@ -8,7 +8,7 @@
                     <h1 id="orderdone"></h1>
                     <h2>Suomenkielinen valikoima / Finska utbudet</h2>
                     <table class="table table-bordered" id="selection_table">
-                        <thead>
+                        <thead >
                             <tr>
                                 <th hidden>BookID</th>
                                 <th>ISBN <span class="glyphicon glyphicon-sort"></span></th>
@@ -47,7 +47,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
- 
     <script>
            $(document).ready(function () {
 
@@ -75,7 +74,9 @@
                     }
                    });
                   $('#cartsum').empty().append(counter);
+
                   })
+
                     $.ajax({
                         type: 'GET',
                         url: '/api/SelectionsAPI',
@@ -83,7 +84,7 @@
                         success: function (data) {
                             var selection = '';
                             $.each(data, function (i, val) {
-                                if (val.Language == 'Suomi' && val.Season == '1/2020') {
+                                if (val.Language == 'Ruotsi' && val.Season == '1/2020') {
                                     // luodaan taulukko, johon arvot tuodaan halutuista sarakkeista
                                     selection +=
                                         '<tr>' +
@@ -201,7 +202,6 @@
                                                                         }
                                                                     });
                                                                     $('#cartsum').empty().append(counter);
-
                                                                 })
                                                             },
                                                             error: function () {
@@ -240,7 +240,6 @@
             const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
                 v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
             )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
-
             document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
                 const table = th.closest('#selection_table')
                 Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
@@ -253,3 +252,4 @@
     </script>
 
 }
+

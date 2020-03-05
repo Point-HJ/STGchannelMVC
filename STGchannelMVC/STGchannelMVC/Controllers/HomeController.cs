@@ -13,7 +13,7 @@ namespace STGchannelMVC.Controllers
 
             if (User.IsInRole("Näytevalikoima-asiakas"))
             {
-                return View("NV/Index.cshtml");
+                return View("NV/Index");
             }
             if (User.IsInRole("Logistiikka-asiakas"))
             {

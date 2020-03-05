@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +21,18 @@ namespace STGchannelMVC
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+
+            //config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(
+            // new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd" });
+
+
+            //var json = config.Formatters.JsonFormatter;
+            //json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            //config.Formatters.Remove(config.Formatters.XmlFormatter);
+            //((DefaultContractResolver)config.Formatters.JsonFormatter.SerializerSettings.ContractResolver).IgnoreSerializableAttribute = true;
         }
+
+
     }
 }

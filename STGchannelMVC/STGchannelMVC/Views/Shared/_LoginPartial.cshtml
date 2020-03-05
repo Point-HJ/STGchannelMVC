@@ -1,22 +1,49 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@using Microsoft.AspNet.Identity
+@if (User.Identity.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    if (User.IsInRole("Näytevalikoima-asiakas"))
     {
-    @Html.AntiForgeryToken()
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav navbar-nav navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+            <input id="search" type="text" placeholder="Etsi / Söka..">
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+           
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="/NV/info"><span class="glyphicon glyphicon-info-sign"></span></a></li>
+                <li><a href="/NV/Index"><span class="flag-icon flag-icon-fi" style="height: 20px "></span>  Valikoima / Utbudet</a></li>
+                <li><a href="/NV/IndexSVE"><span class="flag-icon flag-icon-se" style="height:20px"></span>  Valikoima / Utbudet</a></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos</a></li>
+                <li>@Html.ActionLink("Tilaushistoria", "History", "NV")</li>
+                <li><a href="/NV/shoppingcart"><span class="fa fa-shopping-cart" style="font-size:20px"></span>    <span id="cartsum"></span> kpl</a></li>
+
+
+            </ul>
+        }
+    }
+    if (User.IsInRole("Logistiikka-asiakas"))
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        }
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+

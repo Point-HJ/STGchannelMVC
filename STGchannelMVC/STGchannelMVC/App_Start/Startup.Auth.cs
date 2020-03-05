@@ -15,8 +15,6 @@ namespace STGchannelMVC
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-
-          //  CreateUserAndRoles();
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -69,34 +67,6 @@ namespace STGchannelMVC
         }
 
 
-        //public void CreateUserAndRoles()
-        //{
-        //    ApplicationDbContext context = new ApplicationDbContext();
-
-        //    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-        //    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
-        //    if (!roleManager.RoleExists("SuperAdmin"))
-        //    {
-        //        //Create superadmin role
-        //        var role = new IdentityRole("SuperAdmin");
-        //        roleManager.Create(role);
-
-        //        //Create default user
-        //        var user = new ApplicationUser();
-        //        user.UserName = "101";
-        //        user.CompanyID = "101";
-        //        user.CompanyName = "Admin";
-        //        user.Email = "heidi.joenpolvi@bookygroup.fi";
-        //        user.Password = "Stg2020!";
-        //        string pwd = "Stg2020!";
-
-        //        var newuser = userManager.Create(user, pwd);
-        //        if (newuser.Succeeded)
-        //        {
-        //            userManager.AddToRole(user.Id, "SuperAdmin");
-        //        }
-        //    }
-        //}
+        
     }
 }

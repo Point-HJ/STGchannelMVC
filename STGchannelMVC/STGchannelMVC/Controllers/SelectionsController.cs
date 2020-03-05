@@ -17,9 +17,10 @@ namespace STGchannelMVC.Controllers
         // GET: Selections
         public ActionResult Index()
         {
+            
             return View(db.Selection.ToList());
         }
-
+       
         // GET: Selections/Details/5
         public ActionResult Details(int? id)
         {

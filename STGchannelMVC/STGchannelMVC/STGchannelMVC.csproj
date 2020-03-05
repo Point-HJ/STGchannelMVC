@@ -189,6 +189,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartsAPIController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NVController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
+    <Compile Include="Controllers\SelectionsAPIController.cs" />
     <Compile Include="Controllers\SelectionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,6 +240,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\pkirjakeskus_logo2018_musta_RGB.png" />
+    <Content Include="Content\Images\pkirjakeskus_logo2018_nega_RGB.png" />
+    <Content Include="Content\MyStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -275,11 +280,15 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\notify.min.js" />
+    <Content Include="Scripts\Scripts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -318,7 +327,6 @@
     <Content Include="Views\Admin\CreateUser.cshtml" />
     <Content Include="Views\Admin\AssignRole.cshtml" />
     <Content Include="Views\Admin\CreateRole.cshtml" />
-    <Content Include="Views\NV\Index.cshtml" />
     <Content Include="Views\Logistiikka\Index.cshtml" />
     <Content Include="Views\Carts\Create.cshtml" />
     <Content Include="Views\Carts\Delete.cshtml" />
@@ -340,6 +348,11 @@
     <Content Include="Views\Languages\Details.cshtml" />
     <Content Include="Views\Languages\Edit.cshtml" />
     <Content Include="Views\Languages\Index.cshtml" />
+    <Content Include="Views\NV\Index.cshtml" />
+    <Content Include="Views\NV\Shoppingcart.cshtml" />
+    <Content Include="Views\NV\History.cshtml" />
+    <Content Include="Views\NV\IndexSVE.cshtml" />
+    <Content Include="Views\NV\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
