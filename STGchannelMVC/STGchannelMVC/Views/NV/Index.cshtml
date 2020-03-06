@@ -7,7 +7,7 @@
                 <div class="container">
                     <h1 id="orderdone"></h1>
                     <h2>Suomenkielinen valikoima / Finska utbudet</h2>
-                    <table class="table table-bordered" id="selection_table">
+                    <table class="table table-bordered" id="selection_table" style="background-color:aliceblue">
                         <thead>
                             <tr>
                                 <th hidden>BookID</th>
@@ -47,9 +47,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery.freezeheader.js"></script>
     <script>
-           $(document).ready(function () {
+        $(document).ready(function () {
+
+            $('#selection_table').freezeHeader();
+
 
              var cartuser = @HttpContext.Current.User.Identity.Name;
 
@@ -234,6 +238,11 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+
+
+            //taulun otsikon lukitus skrollatessa
+
+
 
             //taulun sorttaus
             const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;

@@ -196,6 +196,8 @@
     <Compile Include="Controllers\LogistiikkaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NVController.cs" />
+    <Compile Include="Controllers\q_import_bhController.cs" />
+    <Compile Include="Controllers\q_import_bpController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Controllers\SelectionsAPIController.cs" />
     <Compile Include="Controllers\SelectionsController.cs" />
@@ -226,6 +228,27 @@
       <DependentUpon>CartViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\POViewModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POViewModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\POViewModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\POViewModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POViewModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\q_import_bh.cs">
+      <DependentUpon>POViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\q_import_bp.cs">
+      <DependentUpon>POViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Seasons.cs">
       <DependentUpon>CartViewModel.tt</DependentUpon>
     </Compile>
@@ -257,6 +280,16 @@
       <DependentUpon>CartViewModel.edmx</DependentUpon>
       <LastGenOutput>CartViewModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\POViewModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>POViewModel.edmx</DependentUpon>
+      <LastGenOutput>POViewModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\POViewModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>POViewModel.edmx</DependentUpon>
+      <LastGenOutput>POViewModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -274,12 +307,21 @@
     <Content Include="Models\CartViewModel.edmx.diagram">
       <DependentUpon>CartViewModel.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\POViewModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>POViewModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\POViewModel.edmx.diagram">
+      <DependentUpon>POViewModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.floatThead.min.js" />
+    <Content Include="Scripts\jquery.freezeheader.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -353,6 +395,7 @@
     <Content Include="Views\NV\History.cshtml" />
     <Content Include="Views\NV\IndexSVE.cshtml" />
     <Content Include="Views\NV\Info.cshtml" />
+    <Content Include="Views\Logistiikka\AddPO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

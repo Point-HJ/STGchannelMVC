@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Test_jvspkkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="q_import_bh">
+          <Key>
+            <PropertyRef Name="foretagkod" />
+            <PropertyRef Name="q_MessageNumber" />
+            <PropertyRef Name="Bestnr" />
+          </Key>
+          <Property Name="foretagkod" Type="smallint" Nullable="false" />
+          <Property Name="q_MessageNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="q_PartyIDType" Type="varchar" MaxLength="40" />
+          <Property Name="q_PartyID_Identifier" Type="varchar" MaxLength="40" />
+          <Property Name="Bestnr" Type="bigint" Nullable="false" />
+          <Property Name="q_Seller_identifier" Type="varchar" MaxLength="40" />
+          <Property Name="RowCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="rowupdatedby" Type="varchar" MaxLength="6" />
+          <Property Name="rowupdateddt" Type="datetime" />
+          <Property Name="OrdLevAdr1" Type="nvarchar" MaxLength="36" />
+          <Property Name="ohderrorcd" Type="varchar" MaxLength="6" />
+          <Property Name="q_transferd" Type="datetime" />
+          <Property Name="edit" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="q_import_bp">
+          <Key>
+            <PropertyRef Name="foretagkod" />
+            <PropertyRef Name="q_MessageNumber" />
+            <PropertyRef Name="Bestnr" />
+            <PropertyRef Name="BestRadNr" />
+          </Key>
+          <Property Name="foretagkod" Type="smallint" Nullable="false" />
+          <Property Name="q_MessageNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="q_PartyIDType" Type="varchar" MaxLength="40" />
+          <Property Name="q_PartyID_Identifier" Type="varchar" MaxLength="40" />
+          <Property Name="Bestnr" Type="bigint" Nullable="false" />
+          <Property Name="BestRadNr" Type="int" Nullable="false" />
+          <Property Name="Artnr" Type="varchar" MaxLength="40" />
+          <Property Name="ArtBeskr" Type="varchar" MaxLength="80" />
+          <Property Name="BestAnt" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="RowCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="rowupdatedby" Type="varchar" MaxLength="6" />
+          <Property Name="rowupdateddt" Type="datetime" />
+          <Property Name="OrdErrorCd" Type="smallint" />
+          <Property Name="q_ExtBestRadNr" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="Test_jvspkkModelStoreContainer">
+          <EntitySet Name="q_import_bh" EntityType="Self.q_import_bh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="q_import_bp" EntityType="Self.q_import_bp" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Test_jvspkkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="q_import_bh">
+          <Key>
+            <PropertyRef Name="foretagkod" />
+            <PropertyRef Name="q_MessageNumber" />
+            <PropertyRef Name="Bestnr" />
+          </Key>
+          <Property Name="foretagkod" Type="Int16" Nullable="false" />
+          <Property Name="q_MessageNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="q_PartyIDType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="q_PartyID_Identifier" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Bestnr" Type="Int64" Nullable="false" />
+          <Property Name="q_Seller_identifier" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rowupdatedby" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="rowupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="OrdLevAdr1" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="ohderrorcd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="q_transferd" Type="DateTime" Precision="3" />
+          <Property Name="edit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="q_import_bp">
+          <Key>
+            <PropertyRef Name="foretagkod" />
+            <PropertyRef Name="q_MessageNumber" />
+            <PropertyRef Name="Bestnr" />
+            <PropertyRef Name="BestRadNr" />
+          </Key>
+          <Property Name="foretagkod" Type="Int16" Nullable="false" />
+          <Property Name="q_MessageNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="q_PartyIDType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="q_PartyID_Identifier" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Bestnr" Type="Int64" Nullable="false" />
+          <Property Name="BestRadNr" Type="Int32" Nullable="false" />
+          <Property Name="Artnr" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ArtBeskr" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="BestAnt" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="RowCreatedDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rowupdatedby" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="rowupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="OrdErrorCd" Type="Int16" />
+          <Property Name="q_ExtBestRadNr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Test_jvspkkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="q_import_bh" EntityType="Self.q_import_bh" />
+          <EntitySet Name="q_import_bp" EntityType="Self.q_import_bp" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Test_jvspkkModelStoreContainer" CdmEntityContainer="Test_jvspkkEntities">
+          <EntitySetMapping Name="q_import_bh">
+            <EntityTypeMapping TypeName="Test_jvspkkModel.q_import_bh">
+              <MappingFragment StoreEntitySet="q_import_bh">
+                <ScalarProperty Name="foretagkod" ColumnName="foretagkod" />
+                <ScalarProperty Name="q_MessageNumber" ColumnName="q_MessageNumber" />
+                <ScalarProperty Name="q_PartyIDType" ColumnName="q_PartyIDType" />
+                <ScalarProperty Name="q_PartyID_Identifier" ColumnName="q_PartyID_Identifier" />
+                <ScalarProperty Name="Bestnr" ColumnName="Bestnr" />
+                <ScalarProperty Name="q_Seller_identifier" ColumnName="q_Seller_identifier" />
+                <ScalarProperty Name="RowCreatedDt" ColumnName="RowCreatedDt" />
+                <ScalarProperty Name="rowupdatedby" ColumnName="rowupdatedby" />
+                <ScalarProperty Name="rowupdateddt" ColumnName="rowupdateddt" />
+                <ScalarProperty Name="OrdLevAdr1" ColumnName="OrdLevAdr1" />
+                <ScalarProperty Name="ohderrorcd" ColumnName="ohderrorcd" />
+                <ScalarProperty Name="q_transferd" ColumnName="q_transferd" />
+                <ScalarProperty Name="edit" ColumnName="edit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="q_import_bp">
+            <EntityTypeMapping TypeName="Test_jvspkkModel.q_import_bp">
+              <MappingFragment StoreEntitySet="q_import_bp">
+                <ScalarProperty Name="foretagkod" ColumnName="foretagkod" />
+                <ScalarProperty Name="q_MessageNumber" ColumnName="q_MessageNumber" />
+                <ScalarProperty Name="q_PartyIDType" ColumnName="q_PartyIDType" />
+                <ScalarProperty Name="q_PartyID_Identifier" ColumnName="q_PartyID_Identifier" />
+                <ScalarProperty Name="Bestnr" ColumnName="Bestnr" />
+                <ScalarProperty Name="BestRadNr" ColumnName="BestRadNr" />
+                <ScalarProperty Name="Artnr" ColumnName="Artnr" />
+                <ScalarProperty Name="ArtBeskr" ColumnName="ArtBeskr" />
+                <ScalarProperty Name="BestAnt" ColumnName="BestAnt" />
+                <ScalarProperty Name="RowCreatedDt" ColumnName="RowCreatedDt" />
+                <ScalarProperty Name="rowupdatedby" ColumnName="rowupdatedby" />
+                <ScalarProperty Name="rowupdateddt" ColumnName="rowupdateddt" />
+                <ScalarProperty Name="OrdErrorCd" ColumnName="OrdErrorCd" />
+                <ScalarProperty Name="q_ExtBestRadNr" ColumnName="q_ExtBestRadNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -96,3 +96,10 @@ body {
     padding-top: 48px;
     padding-bottom: 48px;
 }
+
+/*#selection_table {
+    position: fixed;
+    top: 0px;
+    display: none;
+    background-color: white;
+}*/

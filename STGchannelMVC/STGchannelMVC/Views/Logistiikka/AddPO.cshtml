@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "AddPO";
+}
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Lisää PO-numero</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <input id="btnAdd" type="submit" value="Add row" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="tblPO"></table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" id="btnSave" value="Save" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="outputTable">
+    </div>
+
+
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var user = @HttpContext.Current.User.Identity.Name;
+
+            function getDate() {
+                var d = new Date();
+                var month = d.getMonth() + 1;
+                var day = d.getDate();
+                var year = d.getFullYear();
+                return date = year + '/' +
+                    (('' + month).length < 2 ? '0' : '') + month + '/' +
+                    (('' + day).length < 2 ? '0' : '') + day;
+            }
+
+            $("#btnAdd").click(function () {
+                var $table = $("#tblPO");
+                var $tr = $("<tr>");
+
+                //PO-numero
+                var $td = $("<td>").text("PO-numero");
+                $tr.append($td);
+                $td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td)
+
+                //Ean
+                var $td = $("<td>").text("EAN");
+                $tr.append($td);
+                td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtEAN").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                //Määrä
+                var $td = $("<td>").text("Määrä");
+                $tr.append($td);
+                td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtAmount").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+
+                $td = $("<td>");
+                var $button = $("<button>").text("Poista");
+                $td.append($button);
+                $tr.append($td);
+
+                $table.append($tr);
+
+                //Rivin poisto
+                $button.click(function () {
+                    $button.closest("tr").remove();
+                })
+
+             });
+
+            $('#btnSave').click(function () {
+                var div = $("#outputTable");
+                let lineNo = 1;
+                $("#tblPO tr").each(function () {
+                    var po = $(this).find("#txtPO").val();
+                    var EAN = $(this).find("#txtEAN").val();
+                    var Amount = $(this).find("#txtAmount").val();
+
+                    div.append(lineNo + ". PO: " + po + ", EAN: " + EAN + ", Määrä: " + Amount);
+                    div.append("<br>");
+
+                    var bhform = {
+                        foretagkod: 3000,
+                        q_MessageNumber: '100',
+                        Bestnr: po,
+                        RowCreatedDt: getDate(),
+                    }
+                    var bpform = {
+                    foretagkod: 3000,
+                    q_MessageNumber: '100',
+                    Bestnr: po,
+                    Artnr: EAN,
+                    BestAnt: Amount,
+                    q_PartyID_Identifier: user,
+                    RowCreatedDt: getDate(),
+                    BestRadNr: lineNo++,   //juokseva numero / PO
+                    }
+
+                    $.ajax({
+                    type: 'post',
+                    url: '/api/q_import_bh',
+                    data: bhform,
+                        success: function () {
+                             console.log('Tiedot tallennettu BH');
+                    },
+                    error: function () {
+                        console.log('Virhe. Tietoja ei tallennettu tauluun BH!');
+                    }
+                     });
+
+                    $.ajax({
+                       method: 'post',
+                       url: '/api/q_import_bp',
+                       data: bpform,
+                       success: function () {
+                         console.log('Tiedot tallennettu BP');
+                          location.reload();
+                        },
+                       error: function () {
+                        console.log('Virhe. Tietoja ei tallennettu tauluun BP!');
+                        }
+                    });
+
+                });
+
+                
+
+             });
+
+        });
+
+
+    </script>
+}
