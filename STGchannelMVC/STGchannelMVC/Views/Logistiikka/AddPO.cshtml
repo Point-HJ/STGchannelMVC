@@ -23,7 +23,14 @@
             </tr>
             <tr>
                 <td>
-                    <table id="tblPO"></table>
+                    <label>PO-numero</label>
+                    <input id="txtPO1" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="tblPO">
+                    </table>
                 </td>
             </tr>
             <tr>
@@ -49,26 +56,25 @@
     <script>
         $(document).ready(function () {
 
+            //käyttäjätunnus 
             var user = @HttpContext.Current.User.Identity.Name;
 
-            function getDate() {
-                var d = new Date();
-                var month = d.getMonth() + 1;
-                var day = d.getDate();
-                var year = d.getFullYear();
-                return date = year + '/' +
-                    (('' + month).length < 2 ? '0' : '') + month + '/' +
-                    (('' + day).length < 2 ? '0' : '') + day;
-            }
 
-            $("#btnAdd").click(function () {
+            //PO-numero kentät
                 var $table = $("#tblPO");
                 var $tr = $("<tr>");
 
-                //PO-numero
-                var $td = $("<td>").text("PO-numero");
+               
+                $("#txtPO1").keyup(function () {
+                     var value = $(this).val();
+                     $("#txtPO").val(value);
+                  });
+
+
+               // PO-numero
+                var $td = $("<td hidden>").text("PO-numero");
                 $tr.append($td);
-                $td = $("<td>");
+                $td = $("<td hidden>");
                 var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text");
                 $td.append($textbox);
                 $tr.append($td)
@@ -89,80 +95,135 @@
                 $td.append($textbox);
                 $tr.append($td);
 
-
+                //Poistonappula
                 $td = $("<td>");
                 var $button = $("<button>").text("Poista");
                 $td.append($button);
                 $tr.append($td);
 
+                //rivien lisäys tauluun
                 $table.append($tr);
 
-                //Rivin poisto
+            //Päivämääräfunktio
+            function getDate() {
+                var d = new Date();
+                var month = d.getMonth() + 1;
+                var day = d.getDate();
+                var year = d.getFullYear();
+                return date = year + '/' +
+                    (('' + month).length < 2 ? '0' : '') + month + '/' +
+                    (('' + day).length < 2 ? '0' : '') + day;
+            }
+
+            //Rivin lisäys nappia painaessa
+            $("#btnAdd").click(function () {
+                var $table = $("#tblPO");
+                var $tr = $("<tr>");
+
+                 $('#txtPO1').change(function() {
+                     $('#txtPO').val($('#txtPO1').val());
+                   });
+
+               // PO-numero
+                var $td = $("<td hidden>").text("PO-numero");
+                $tr.append($td);
+                $td = $("<td hidden>");
+                var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text").attr("value", ($('#txtPO1').val()));
+                $td.append($textbox);
+                $tr.append($td)
+
+                //Ean
+                var $td = $("<td>").text("EAN");
+                $tr.append($td);
+                td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtEAN").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                //Määrä
+                var $td = $("<td>").text("Määrä");
+                $tr.append($td);
+                td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtAmount").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                //Poistonappula
+                $td = $("<td>");
+                var $button = $("<button>").text("Poista");
+                $td.append($button);
+                $tr.append($td);
+
+                //rivien lisäys tauluun
+                $table.append($tr);
+
+                //Rivin poisto 
                 $button.click(function () {
                     $button.closest("tr").remove();
                 })
 
              });
-
+            //Tallenna rivit
             $('#btnSave').click(function () {
                 var div = $("#outputTable");
-                let lineNo = 1;
+                let lineNo = 1; //rivinumero
+                  
+
+                //Luuppaa läpi rivien
                 $("#tblPO tr").each(function () {
+
                     var po = $(this).find("#txtPO").val();
                     var EAN = $(this).find("#txtEAN").val();
                     var Amount = $(this).find("#txtAmount").val();
-
+                    //Lisää rivit sivulle #outputTable -tauluun
                     div.append(lineNo + ". PO: " + po + ", EAN: " + EAN + ", Määrä: " + Amount);
                     div.append("<br>");
 
+                    //luo muuttuja ajax-tallennusta varten
                     var bhform = {
                         foretagkod: 3000,
                         q_MessageNumber: '100',
                         Bestnr: po,
                         RowCreatedDt: getDate(),
                     }
+                      //luo muuttuja ajax-tallennusta varten
                     var bpform = {
-                    foretagkod: 3000,
-                    q_MessageNumber: '100',
-                    Bestnr: po,
-                    Artnr: EAN,
-                    BestAnt: Amount,
-                    q_PartyID_Identifier: user,
-                    RowCreatedDt: getDate(),
-                    BestRadNr: lineNo++,   //juokseva numero / PO
+                       foretagkod: 3000,
+                       q_MessageNumber: '100',
+                       Bestnr: po,
+                       Artnr: EAN,
+                       BestAnt: Amount,
+                       q_PartyID_Identifier: user,
+                       RowCreatedDt: getDate(),
+                       BestRadNr: lineNo++,   //juokseva rivinumero / PO
                     }
-
+                    //Tallenna tietokantaan q_import_bh
                     $.ajax({
-                    type: 'post',
-                    url: '/api/q_import_bh',
-                    data: bhform,
-                        success: function () {
+                         type: 'post',
+                         url: '/api/q_import_bh',
+                         data: bhform,
+                           success: function () {
                              console.log('Tiedot tallennettu BH');
-                    },
-                    error: function () {
-                        console.log('Virhe. Tietoja ei tallennettu tauluun BH!');
-                    }
+                           },
+                           error: function () {
+                             console.log('Virhe. Tietoja ei tallennettu tauluun BH!');
+                           }
                      });
-
+                    //Tallenna tietokantaan q_import_bp
                     $.ajax({
                        method: 'post',
                        url: '/api/q_import_bp',
                        data: bpform,
                        success: function () {
                          console.log('Tiedot tallennettu BP');
-                          location.reload();
+                         //location.reload();
                         },
                        error: function () {
                         console.log('Virhe. Tietoja ei tallennettu tauluun BP!');
                         }
                     });
-
                 });
-
-                
-
              });
-
         });
 
 
