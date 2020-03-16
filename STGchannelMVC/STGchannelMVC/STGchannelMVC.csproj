@@ -191,6 +191,9 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsAPIController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="get_next_tranid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
     <Compile Include="Controllers\LogistiikkaController.cs" />

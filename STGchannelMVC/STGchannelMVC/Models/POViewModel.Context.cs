@@ -12,6 +12,8 @@ namespace STGchannelMVC.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Test_jvspkkEntities : DbContext
     {
@@ -27,5 +29,18 @@ namespace STGchannelMVC.Models
     
         public virtual DbSet<q_import_bh> q_import_bh { get; set; }
         public virtual DbSet<q_import_bp> q_import_bp { get; set; }
+    
+        public virtual ObjectResult<Nullable<long>> q_get_next_tranid(Nullable<short> foretagkod, ObjectParameter tranid, string calltype)
+        {
+            var foretagkodParameter = foretagkod.HasValue ?
+                new ObjectParameter("foretagkod", foretagkod) :
+                new ObjectParameter("foretagkod", typeof(short));
+    
+            var calltypeParameter = calltype != null ?
+                new ObjectParameter("calltype", calltype) :
+                new ObjectParameter("calltype", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("q_get_next_tranid", foretagkodParameter, tranid, calltypeParameter);
+        }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Test_jvspkkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Test_jvspkkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="q_import_bh">
           <Key>
             <PropertyRef Name="foretagkod" />
@@ -47,12 +47,16 @@
           <Property Name="OrdErrorCd" Type="smallint" />
           <Property Name="q_ExtBestRadNr" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <Function Name="q_get_next_tranid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="foretagkod" Type="smallint" Mode="In" />
+          <Parameter Name="tranid" Type="bigint" Mode="InOut" />
+          <Parameter Name="calltype" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="Test_jvspkkModelStoreContainer">
           <EntitySet Name="q_import_bh" EntityType="Self.q_import_bh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="q_import_bp" EntityType="Self.q_import_bp" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Test_jvspkkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -101,6 +105,11 @@
         <EntityContainer Name="Test_jvspkkEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="q_import_bh" EntityType="Self.q_import_bh" />
           <EntitySet Name="q_import_bp" EntityType="Self.q_import_bp" />
+          <FunctionImport Name="q_get_next_tranid" ReturnType="Collection(Int64)">
+            <Parameter Name="foretagkod" Mode="In" Type="Int16" />
+            <Parameter Name="tranid" Mode="InOut" Type="Int64" />
+            <Parameter Name="calltype" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -147,6 +156,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="q_get_next_tranid" FunctionName="Test_jvspkkModel.Store.q_get_next_tranid" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

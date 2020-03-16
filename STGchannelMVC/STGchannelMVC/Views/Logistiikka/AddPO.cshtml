@@ -2,52 +2,47 @@
 @{
     ViewBag.Title = "AddPO";
 }
-
-
-
-
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+
     <title>Lisää PO-numero</title>
 </head>
 <body>
-    <div>
-        <table>
-            <tr>
-                <td>
-                    <input id="btnAdd" type="submit" value="Add row" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>PO-numero</label>
-                    <input id="txtPO1" type="text" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table id="tblPO">
+    <div class="container-fluid">
+      
+            <div class="form-group">
+                <div class="center">
+                    <table>
+                            <tr>
+                                <td>
+                                    <button class="button" id="btnPO" type="submit">Luo uusi PO</button>
+                                    <input id="txtPO1" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table id="tblPO">
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="btnAdd" class="button" type="button" value="Lisää tuote" />
+                                    <input class="button" type="button" id="btnSave" value="Tallenna" />
+                                </td>
+                            </tr>
                     </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="button" id="btnSave" value="Save" />
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
     </div>
     <div id="outputTable">
     </div>
-
-
 </body>
 </html>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <meta name="viewport" content="width=device-width initial-scale=1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,54 +50,8 @@
 
     <script>
         $(document).ready(function () {
-
-            //käyttäjätunnus 
+            //käyttäjätunnus
             var user = @HttpContext.Current.User.Identity.Name;
-
-
-            //PO-numero kentät
-                var $table = $("#tblPO");
-                var $tr = $("<tr>");
-
-               
-                $("#txtPO1").keyup(function () {
-                     var value = $(this).val();
-                     $("#txtPO").val(value);
-                  });
-
-
-               // PO-numero
-                var $td = $("<td hidden>").text("PO-numero");
-                $tr.append($td);
-                $td = $("<td hidden>");
-                var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text");
-                $td.append($textbox);
-                $tr.append($td)
-
-                //Ean
-                var $td = $("<td>").text("EAN");
-                $tr.append($td);
-                td = $("<td>");
-                var $textbox = $("<input>").attr("id", "txtEAN").attr("type", "text");
-                $td.append($textbox);
-                $tr.append($td);
-
-                //Määrä
-                var $td = $("<td>").text("Määrä");
-                $tr.append($td);
-                td = $("<td>");
-                var $textbox = $("<input>").attr("id", "txtAmount").attr("type", "text");
-                $td.append($textbox);
-                $tr.append($td);
-
-                //Poistonappula
-                $td = $("<td>");
-                var $button = $("<button>").text("Poista");
-                $td.append($button);
-                $tr.append($td);
-
-                //rivien lisäys tauluun
-                $table.append($tr);
 
             //Päivämääräfunktio
             function getDate() {
@@ -114,15 +63,13 @@
                     (('' + month).length < 2 ? '0' : '') + month + '/' +
                     (('' + day).length < 2 ? '0' : '') + day;
             }
+               //PO-numero kentät
+               var $table = $("#tblPO");
+               var $tr = $("<tr>");
 
-            //Rivin lisäys nappia painaessa
-            $("#btnAdd").click(function () {
-                var $table = $("#tblPO");
-                var $tr = $("<tr>");
-
-                 $('#txtPO1').change(function() {
-                     $('#txtPO').val($('#txtPO1').val());
-                   });
+            $("#txtPO1").change(function () {
+                     $("#txtPO").val($('#txtPO1').val());
+                  });
 
                // PO-numero
                 var $td = $("<td hidden>").text("PO-numero");
@@ -132,8 +79,9 @@
                 $td.append($textbox);
                 $tr.append($td)
 
+
                 //Ean
-                var $td = $("<td>").text("EAN");
+                var $td = $("<td>").text("EAN ");
                 $tr.append($td);
                 td = $("<td>");
                 var $textbox = $("<input>").attr("id", "txtEAN").attr("type", "text");
@@ -141,7 +89,7 @@
                 $tr.append($td);
 
                 //Määrä
-                var $td = $("<td>").text("Määrä");
+                var $td = $("<td>").text("Määrä ");
                 $tr.append($td);
                 td = $("<td>");
                 var $textbox = $("<input>").attr("id", "txtAmount").attr("type", "text");
@@ -150,14 +98,85 @@
 
                 //Poistonappula
                 $td = $("<td>");
-                var $button = $("<button>").text("Poista");
+                var $button = $("<button>").attr("class", "button").text("Poista");
                 $td.append($button);
                 $tr.append($td);
 
                 //rivien lisäys tauluun
                 $table.append($tr);
 
-                //Rivin poisto 
+                //Rivin poisto
+                $button.click(function () {
+                    $button.closest("tr").remove();
+                })
+
+
+            $('#btnPO').click(function () {
+
+                var cpo = {};
+                cpo.foretagkod = 3000;
+                console.log(cpo);
+                JSON.stringify(cpo);
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    url: '/Logistiikka/AddPOnum',
+                    data:  JSON.stringify(cpo),
+                    dataType: "json",
+                    //async: true,
+                    success: function (result) {
+                        $("#txtPO1").val(result);
+                        $("#txtPO").val(result);
+                        console.log(result);
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                       console.log(jqXHR.responseText);
+                    }
+                });
+            });
+
+            //Rivin lisäys nappia painaessa
+            $("#btnAdd").click(function () {
+                var $table = $("#tblPO");
+                var $tr = $("<tr>");
+
+
+
+             //   PO-numero
+                var $td = $("<td hidden>").text("PO-numero");
+                $tr.append($td);
+                $td = $("<td hidden>");
+                var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text").attr("value", ($('#txtPO1').val()));
+                $td.append($textbox);
+                $tr.append($td)
+
+                //Ean
+                var $td = $("<td>").text("EAN ");
+                $tr.append($td);
+                td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtEAN").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                //Määrä
+                var $td = $("<td>").text("Määrä ");
+                $tr.append($td);
+                td = $("<td>");
+                var $textbox = $("<input>").attr("id", "txtAmount").attr("type", "text");
+                $td.append($textbox);
+                $tr.append($td);
+
+                //Poistonappula
+                $td = $("<td>");
+                 var $button = $("<button>").attr("class", "button").text("Poista");
+                $td.append($button);
+                $tr.append($td);
+
+                //rivien lisäys tauluun
+                $table.append($tr);
+
+                //Rivin poisto
                 $button.click(function () {
                     $button.closest("tr").remove();
                 })
@@ -167,7 +186,6 @@
             $('#btnSave').click(function () {
                 var div = $("#outputTable");
                 let lineNo = 1; //rivinumero
-                  
 
                 //Luuppaa läpi rivien
                 $("#tblPO tr").each(function () {
@@ -205,8 +223,10 @@
                            success: function () {
                              console.log('Tiedot tallennettu BH');
                            },
-                           error: function () {
-                             console.log('Virhe. Tietoja ei tallennettu tauluun BH!');
+                        error: function (jqXHR) {
+
+                            console.log('Virhe. Tietoja ei tallennettu tauluun BH!');
+                            console.log(jqXHR.responseText);
                            }
                      });
                     //Tallenna tietokantaan q_import_bp
@@ -216,10 +236,12 @@
                        data: bpform,
                        success: function () {
                          console.log('Tiedot tallennettu BP');
-                         //location.reload();
+                           $("#tblPO").empty();
+                           $("#txtPO1").val('');
                         },
-                       error: function () {
-                        console.log('Virhe. Tietoja ei tallennettu tauluun BP!');
+                        error: function (jqXHR) {
+                            console.log('Virhe. Tietoja ei tallennettu tauluun BP!');
+                            console.log(jqXHR.responseText);
                         }
                     });
                 });
