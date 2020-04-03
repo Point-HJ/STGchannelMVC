@@ -24,6 +24,7 @@
           <Property Name="ohderrorcd" Type="varchar" MaxLength="6" />
           <Property Name="q_transferd" Type="datetime" />
           <Property Name="edit" Type="varchar(max)" />
+          <Property Name="levordernr" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="q_import_bp">
           <Key>
@@ -79,6 +80,7 @@
           <Property Name="ohderrorcd" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="q_transferd" Type="DateTime" Precision="3" />
           <Property Name="edit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="levordernr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="q_import_bp">
           <Key>
@@ -120,6 +122,7 @@
           <EntitySetMapping Name="q_import_bh">
             <EntityTypeMapping TypeName="Test_jvspkkModel.q_import_bh">
               <MappingFragment StoreEntitySet="q_import_bh">
+                <ScalarProperty Name="levordernr" ColumnName="levordernr" />
                 <ScalarProperty Name="foretagkod" ColumnName="foretagkod" />
                 <ScalarProperty Name="q_MessageNumber" ColumnName="q_MessageNumber" />
                 <ScalarProperty Name="q_PartyIDType" ColumnName="q_PartyIDType" />

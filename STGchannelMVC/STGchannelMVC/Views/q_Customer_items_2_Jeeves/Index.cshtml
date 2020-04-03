@@ -1,0 +1,315 @@
+﻿@model IEnumerable<STGchannelMVC.Models.q_Customer_items_2_Jeeves>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.q_profit_center)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_material_group)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_isbn_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.artbeskr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_itemtypecd1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_artkat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.artlistpris)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.momskod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemstatuscode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.artstatnr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateStatusDescr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemtypecd2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_wsoy_libraryclass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.varugruppkod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_fetched_by_inobiz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ar_q_edition_counter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.artkalkber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.artkalkpris)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_publisher_itemid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.artvikt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_publ_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_artbeskr_kiva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_planned_arrival_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_pl_garr_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtBeskrSpec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_edt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_aof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_au)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_des)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_eic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_ill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_ot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_pho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_pre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_rea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_tra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemtypecd3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_print_year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_original_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_series)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_series_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_series_partno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_total_no_part_series)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemtypecd4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.q_language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.webpublish)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_profit_center)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_material_group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_isbn_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.artbeskr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_itemtypecd1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_artkat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.artlistpris)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.momskod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.itemstatuscode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.artstatnr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateStatusDescr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.itemtypecd2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_wsoy_libraryclass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.varugruppkod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_fetched_by_inobiz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ar_q_edition_counter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.artkalkber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.artkalkpris)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_publisher_itemid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.artvikt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_publ_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_artbeskr_kiva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_planned_arrival_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_pl_garr_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtBeskrSpec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_edt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_aof)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_au)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_des)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_eic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_ill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_ot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_pho)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_pre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_rea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_tra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.itemtypecd3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_print_year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_original_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_series)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_series_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_series_partno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_total_no_part_series)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.itemtypecd4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.q_language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.webpublish)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

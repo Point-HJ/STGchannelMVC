@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a2c8235715bd41d4a8997717f34b3113" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="ProductModel.q_Customer_items_2_Jeeves" Width="3.25" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.q_material_group" Width="1.5" PointX="4.625" PointY="0.75" />
+        <EntityTypeShape EntityType="ProductModel.xakh" Width="1.5" PointX="4.875" PointY="4.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

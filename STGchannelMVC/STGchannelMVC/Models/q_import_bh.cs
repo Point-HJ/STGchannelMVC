@@ -27,5 +27,6 @@ namespace STGchannelMVC.Models
         public string ohderrorcd { get; set; }
         public Nullable<System.DateTime> q_transferd { get; set; }
         public string edit { get; set; }
+        public string levordernr { get; set; }
     }
 }

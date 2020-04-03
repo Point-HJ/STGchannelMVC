@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="q_Customer_items_2_Jeeves">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foretagkod" Type="smallint" Nullable="false" />
+          <Property Name="lagstalle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="q_profit_center" Type="nvarchar(max)" />
+          <Property Name="q_material_group" Type="nvarchar(max)" />
+          <Property Name="q_isbn_no" Type="nvarchar(max)" />
+          <Property Name="artnr" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="artbeskr" Type="nvarchar(max)" />
+          <Property Name="q_itemtypecd1" Type="nvarchar(max)" />
+          <Property Name="q_artkat" Type="nvarchar(max)" />
+          <Property Name="artlistpris" Type="nvarchar(max)" />
+          <Property Name="momskod" Type="nvarchar(max)" />
+          <Property Name="itemstatuscode" Type="nvarchar(max)" />
+          <Property Name="q_sap_item_no" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="artstatnr" Type="nvarchar(max)" />
+          <Property Name="UpdateStatusDescr" Type="nvarchar(max)" />
+          <Property Name="itemtypecd2" Type="nvarchar(max)" />
+          <Property Name="q_wsoy_libraryclass" Type="nvarchar(max)" />
+          <Property Name="varugruppkod" Type="nvarchar(max)" />
+          <Property Name="q_fetched_by_inobiz" Type="datetime" />
+          <Property Name="ar_q_edition_counter" Type="nvarchar(max)" />
+          <Property Name="artkalkber" Type="nvarchar(max)" />
+          <Property Name="artkalkpris" Type="nvarchar(max)" />
+          <Property Name="q_publisher_itemid" Type="nvarchar(max)" />
+          <Property Name="artvikt" Type="nvarchar(max)" />
+          <Property Name="q_publ_date" Type="nvarchar(max)" />
+          <Property Name="q_artbeskr_kiva" Type="nvarchar(max)" />
+          <Property Name="q_planned_arrival_date" Type="nvarchar(max)" />
+          <Property Name="q_pl_garr_date" Type="nvarchar(max)" />
+          <Property Name="ArtBeskrSpec" Type="nvarchar(max)" />
+          <Property Name="q_author" Type="nvarchar(max)" />
+          <Property Name="q_edt" Type="nvarchar(max)" />
+          <Property Name="q_aof" Type="nvarchar(max)" />
+          <Property Name="q_au" Type="nvarchar(max)" />
+          <Property Name="q_des" Type="nvarchar(max)" />
+          <Property Name="q_eic" Type="nvarchar(max)" />
+          <Property Name="q_ill" Type="nvarchar(max)" />
+          <Property Name="q_ot" Type="nvarchar(max)" />
+          <Property Name="q_pho" Type="nvarchar(max)" />
+          <Property Name="q_pre" Type="nvarchar(max)" />
+          <Property Name="q_rea" Type="nvarchar(max)" />
+          <Property Name="q_tra" Type="nvarchar(max)" />
+          <Property Name="itemtypecd3" Type="nvarchar(max)" />
+          <Property Name="q_print_year" Type="nvarchar(max)" />
+          <Property Name="q_size" Type="nvarchar(max)" />
+          <Property Name="q_original_title" Type="nvarchar(max)" />
+          <Property Name="q_series" Type="nvarchar(max)" />
+          <Property Name="q_series_id" Type="nvarchar(max)" />
+          <Property Name="q_series_partno" Type="nvarchar(max)" />
+          <Property Name="q_total_no_part_series" Type="nvarchar(max)" />
+          <Property Name="itemtypecd4" Type="nvarchar(max)" />
+          <Property Name="q_language" Type="nvarchar(max)" />
+          <Property Name="webpublish" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="q_material_group">
+          <Key>
+            <PropertyRef Name="ForetagKod" />
+            <PropertyRef Name="q_material_group" />
+          </Key>
+          <Property Name="ForetagKod" Type="smallint" Nullable="false" />
+          <Property Name="q_material_group" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="q_material_group_desc" Type="varchar" MaxLength="100" />
+          <Property Name="RegDat" Type="datetime" Nullable="false" />
+          <Property Name="PersSign" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="RowCreatedBy" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="RowCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RowUpdatedBy" Type="varchar" MaxLength="30" />
+          <Property Name="RowUpdatedDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="xakh">
+          <Key>
+            <PropertyRef Name="ArtKat" />
+            <PropertyRef Name="ForetagKod" />
+          </Key>
+          <Property Name="ArtKat" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ArtKatBeskr" Type="nvarchar" MaxLength="30" />
+          <Property Name="ForetagKod" Type="smallint" Nullable="false" />
+          <Property Name="ICTRuleNumber" Type="smallint" />
+          <Property Name="IntrnCoNoOrigin" Type="smallint" />
+          <Property Name="No_trigger_exec" Type="smallint" />
+          <Property Name="PersSign" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="RegDat" Type="datetime" Nullable="false" />
+          <Property Name="ReplicateRecord" Type="smallint" />
+          <Property Name="RowCreatedBy" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="RowCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RowCreatedUTCDT" Type="datetime" Nullable="false" />
+          <Property Name="RowUpdatedBy" Type="nvarchar" MaxLength="30" />
+          <Property Name="RowUpdatedCols" Type="nvarchar" MaxLength="255" />
+          <Property Name="RowUpdatedDt" Type="datetime" />
+          <Property Name="RowUpdatedUTCDT" Type="datetime" />
+          <Property Name="TimeZoneCode" Type="smallint" />
+          <Property Name="webbeskr" Type="nvarchar" MaxLength="60" />
+          <Property Name="webpublish" Type="nchar" MaxLength="1" />
+          <Property Name="q_default_artvikt" Type="decimal" Precision="8" Scale="3" Nullable="false" />
+          <Property Name="q_ise_item_category1_id" Type="smallint" />
+        </EntityType>
+        <EntityContainer Name="ProductModelStoreContainer">
+          <EntitySet Name="q_Customer_items_2_Jeeves" EntityType="Self.q_Customer_items_2_Jeeves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="q_material_group" EntityType="Self.q_material_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xakh" EntityType="Self.xakh" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProductModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="q_Customer_items_2_Jeeves">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="foretagkod" Type="Int16" Nullable="false" />
+          <Property Name="lagstalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="q_profit_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_material_group" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_isbn_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artnr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artbeskr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_itemtypecd1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_artkat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artlistpris" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="momskod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemstatuscode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_sap_item_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artstatnr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateStatusDescr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemtypecd2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_wsoy_libraryclass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="varugruppkod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_fetched_by_inobiz" Type="DateTime" Precision="3" />
+          <Property Name="ar_q_edition_counter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artkalkber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artkalkpris" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_publisher_itemid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artvikt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_publ_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_artbeskr_kiva" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_planned_arrival_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_pl_garr_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArtBeskrSpec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_author" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_edt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_aof" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_au" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_eic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_ill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_ot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_pho" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_pre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_rea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_tra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemtypecd3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_print_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_size" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_original_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_series" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_series_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_series_partno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_total_no_part_series" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemtypecd4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="q_language" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="webpublish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="ProductEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="q_Customer_items_2_Jeeves" EntityType="Self.q_Customer_items_2_Jeeves" />
+          <EntitySet Name="q_material_group" EntityType="ProductModel.q_material_group" />
+          <EntitySet Name="xakh" EntityType="ProductModel.xakh" />
+        </EntityContainer>
+        <EntityType Name="q_material_group">
+          <Key>
+            <PropertyRef Name="ForetagKod" />
+            <PropertyRef Name="q_material_group1" />
+          </Key>
+          <Property Name="ForetagKod" Type="Int16" Nullable="false" />
+          <Property Name="q_material_group1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="q_material_group_desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RegDat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersSign" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedBy" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowUpdatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RowUpdatedDt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="xakh">
+          <Key>
+            <PropertyRef Name="ArtKat" />
+            <PropertyRef Name="ForetagKod" />
+          </Key>
+          <Property Name="ArtKat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ArtKatBeskr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ForetagKod" Type="Int16" Nullable="false" />
+          <Property Name="ICTRuleNumber" Type="Int16" />
+          <Property Name="IntrnCoNoOrigin" Type="Int16" />
+          <Property Name="No_trigger_exec" Type="Int16" />
+          <Property Name="PersSign" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RegDat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReplicateRecord" Type="Int16" />
+          <Property Name="RowCreatedBy" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RowCreatedDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowCreatedUTCDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowUpdatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RowUpdatedCols" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RowUpdatedDt" Type="DateTime" Precision="3" />
+          <Property Name="RowUpdatedUTCDT" Type="DateTime" Precision="3" />
+          <Property Name="TimeZoneCode" Type="Int16" />
+          <Property Name="webbeskr" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="webpublish" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="q_default_artvikt" Type="Decimal" Nullable="false" Precision="8" Scale="3" />
+          <Property Name="q_ise_item_category1_id" Type="Int16" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProductModelStoreContainer" CdmEntityContainer="ProductEntities">
+          <EntitySetMapping Name="q_Customer_items_2_Jeeves">
+            <EntityTypeMapping TypeName="ProductModel.q_Customer_items_2_Jeeves">
+              <MappingFragment StoreEntitySet="q_Customer_items_2_Jeeves">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="foretagkod" ColumnName="foretagkod" />
+                <ScalarProperty Name="lagstalle" ColumnName="lagstalle" />
+                <ScalarProperty Name="q_profit_center" ColumnName="q_profit_center" />
+                <ScalarProperty Name="q_material_group" ColumnName="q_material_group" />
+                <ScalarProperty Name="q_isbn_no" ColumnName="q_isbn_no" />
+                <ScalarProperty Name="artnr" ColumnName="artnr" />
+                <ScalarProperty Name="artbeskr" ColumnName="artbeskr" />
+                <ScalarProperty Name="q_itemtypecd1" ColumnName="q_itemtypecd1" />
+                <ScalarProperty Name="q_artkat" ColumnName="q_artkat" />
+                <ScalarProperty Name="artlistpris" ColumnName="artlistpris" />
+                <ScalarProperty Name="momskod" ColumnName="momskod" />
+                <ScalarProperty Name="itemstatuscode" ColumnName="itemstatuscode" />
+                <ScalarProperty Name="q_sap_item_no" ColumnName="q_sap_item_no" />
+                <ScalarProperty Name="artstatnr" ColumnName="artstatnr" />
+                <ScalarProperty Name="UpdateStatusDescr" ColumnName="UpdateStatusDescr" />
+                <ScalarProperty Name="itemtypecd2" ColumnName="itemtypecd2" />
+                <ScalarProperty Name="q_wsoy_libraryclass" ColumnName="q_wsoy_libraryclass" />
+                <ScalarProperty Name="varugruppkod" ColumnName="varugruppkod" />
+                <ScalarProperty Name="q_fetched_by_inobiz" ColumnName="q_fetched_by_inobiz" />
+                <ScalarProperty Name="ar_q_edition_counter" ColumnName="ar_q_edition_counter" />
+                <ScalarProperty Name="artkalkber" ColumnName="artkalkber" />
+                <ScalarProperty Name="artkalkpris" ColumnName="artkalkpris" />
+                <ScalarProperty Name="q_publisher_itemid" ColumnName="q_publisher_itemid" />
+                <ScalarProperty Name="artvikt" ColumnName="artvikt" />
+                <ScalarProperty Name="q_publ_date" ColumnName="q_publ_date" />
+                <ScalarProperty Name="q_artbeskr_kiva" ColumnName="q_artbeskr_kiva" />
+                <ScalarProperty Name="q_planned_arrival_date" ColumnName="q_planned_arrival_date" />
+                <ScalarProperty Name="q_pl_garr_date" ColumnName="q_pl_garr_date" />
+                <ScalarProperty Name="ArtBeskrSpec" ColumnName="ArtBeskrSpec" />
+                <ScalarProperty Name="q_author" ColumnName="q_author" />
+                <ScalarProperty Name="q_edt" ColumnName="q_edt" />
+                <ScalarProperty Name="q_aof" ColumnName="q_aof" />
+                <ScalarProperty Name="q_au" ColumnName="q_au" />
+                <ScalarProperty Name="q_des" ColumnName="q_des" />
+                <ScalarProperty Name="q_eic" ColumnName="q_eic" />
+                <ScalarProperty Name="q_ill" ColumnName="q_ill" />
+                <ScalarProperty Name="q_ot" ColumnName="q_ot" />
+                <ScalarProperty Name="q_pho" ColumnName="q_pho" />
+                <ScalarProperty Name="q_pre" ColumnName="q_pre" />
+                <ScalarProperty Name="q_rea" ColumnName="q_rea" />
+                <ScalarProperty Name="q_tra" ColumnName="q_tra" />
+                <ScalarProperty Name="itemtypecd3" ColumnName="itemtypecd3" />
+                <ScalarProperty Name="q_print_year" ColumnName="q_print_year" />
+                <ScalarProperty Name="q_size" ColumnName="q_size" />
+                <ScalarProperty Name="q_original_title" ColumnName="q_original_title" />
+                <ScalarProperty Name="q_series" ColumnName="q_series" />
+                <ScalarProperty Name="q_series_id" ColumnName="q_series_id" />
+                <ScalarProperty Name="q_series_partno" ColumnName="q_series_partno" />
+                <ScalarProperty Name="q_total_no_part_series" ColumnName="q_total_no_part_series" />
+                <ScalarProperty Name="itemtypecd4" ColumnName="itemtypecd4" />
+                <ScalarProperty Name="q_language" ColumnName="q_language" />
+                <ScalarProperty Name="webpublish" ColumnName="webpublish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="q_material_group">
+            <EntityTypeMapping TypeName="ProductModel.q_material_group">
+              <MappingFragment StoreEntitySet="q_material_group">
+                <ScalarProperty Name="RowUpdatedDt" ColumnName="RowUpdatedDt" />
+                <ScalarProperty Name="RowUpdatedBy" ColumnName="RowUpdatedBy" />
+                <ScalarProperty Name="RowCreatedDt" ColumnName="RowCreatedDt" />
+                <ScalarProperty Name="RowCreatedBy" ColumnName="RowCreatedBy" />
+                <ScalarProperty Name="PersSign" ColumnName="PersSign" />
+                <ScalarProperty Name="RegDat" ColumnName="RegDat" />
+                <ScalarProperty Name="q_material_group_desc" ColumnName="q_material_group_desc" />
+                <ScalarProperty Name="q_material_group1" ColumnName="q_material_group" />
+                <ScalarProperty Name="ForetagKod" ColumnName="ForetagKod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xakh">
+            <EntityTypeMapping TypeName="ProductModel.xakh">
+              <MappingFragment StoreEntitySet="xakh">
+                <ScalarProperty Name="q_ise_item_category1_id" ColumnName="q_ise_item_category1_id" />
+                <ScalarProperty Name="q_default_artvikt" ColumnName="q_default_artvikt" />
+                <ScalarProperty Name="webpublish" ColumnName="webpublish" />
+                <ScalarProperty Name="webbeskr" ColumnName="webbeskr" />
+                <ScalarProperty Name="TimeZoneCode" ColumnName="TimeZoneCode" />
+                <ScalarProperty Name="RowUpdatedUTCDT" ColumnName="RowUpdatedUTCDT" />
+                <ScalarProperty Name="RowUpdatedDt" ColumnName="RowUpdatedDt" />
+                <ScalarProperty Name="RowUpdatedCols" ColumnName="RowUpdatedCols" />
+                <ScalarProperty Name="RowUpdatedBy" ColumnName="RowUpdatedBy" />
+                <ScalarProperty Name="RowCreatedUTCDT" ColumnName="RowCreatedUTCDT" />
+                <ScalarProperty Name="RowCreatedDt" ColumnName="RowCreatedDt" />
+                <ScalarProperty Name="RowCreatedBy" ColumnName="RowCreatedBy" />
+                <ScalarProperty Name="ReplicateRecord" ColumnName="ReplicateRecord" />
+                <ScalarProperty Name="RegDat" ColumnName="RegDat" />
+                <ScalarProperty Name="PersSign" ColumnName="PersSign" />
+                <ScalarProperty Name="No_trigger_exec" ColumnName="No_trigger_exec" />
+                <ScalarProperty Name="IntrnCoNoOrigin" ColumnName="IntrnCoNoOrigin" />
+                <ScalarProperty Name="ICTRuleNumber" ColumnName="ICTRuleNumber" />
+                <ScalarProperty Name="ForetagKod" ColumnName="ForetagKod" />
+                <ScalarProperty Name="ArtKatBeskr" ColumnName="ArtKatBeskr" />
+                <ScalarProperty Name="ArtKat" ColumnName="ArtKat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

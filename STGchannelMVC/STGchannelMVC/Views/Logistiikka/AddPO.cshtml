@@ -13,26 +13,24 @@
       
             <div class="form-group">
                 <div class="center">
+                    <button class="button" id="btnPO" type="submit">Luo uusi PO</button>
+                    <input id="txtPO1" value="" />
+                    <div>
+                        <label>Asiakkaan oma tilausviite</label>
+                        <input id="ref" value=""  />
+                    </div>
                     <table>
-                            <tr>
-                                <td>
-                                    <button class="button" id="btnPO" type="submit">Luo uusi PO</button>
-                                    <input id="txtPO1" value="" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table id="tblPO">
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input id="btnAdd" class="button" type="button" value="Lisää tuote" />
-                                    <input class="button" type="button" id="btnSave" value="Tallenna" />
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <table id="tblPO">
+                                </table>
+                            </td>
+                        </tr>
                     </table>
+                    <div>
+                        <input id="btnAdd" class="button" type="button" value="Lisää tuote" />
+                        <input class="button" type="button" id="btnSave" value="Tallenna" />
+                    </div>
                 </div>
             </div>
     </div>
@@ -67,9 +65,12 @@
                var $table = $("#tblPO");
                var $tr = $("<tr>");
 
-            $("#txtPO1").change(function () {
+               $("#txtPO1").change(function () {
                      $("#txtPO").val($('#txtPO1').val());
-                  });
+               });
+             $("#ref").change(function () {
+                     $("#txtref").val($('#ref').val());
+                });
 
                // PO-numero
                 var $td = $("<td hidden>").text("PO-numero");
@@ -78,7 +79,13 @@
                 var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text").attr("value", ($('#txtPO1').val()));
                 $td.append($textbox);
                 $tr.append($td)
-
+                 //viite
+                var $td = $("<td hidden>").text("Viite");
+                $tr.append($td);
+                $td = $("<td hidden>");
+                var $textbox = $("<input>").attr("id", "txtref").attr("type", "text").attr("value", ($('#ref').val()));
+                $td.append($textbox);
+                $tr.append($td)
 
                 //Ean
                 var $td = $("<td>").text("EAN ");
@@ -141,16 +148,20 @@
                 var $table = $("#tblPO");
                 var $tr = $("<tr>");
 
-
-
-             //   PO-numero
+                //PO-numero
                 var $td = $("<td hidden>").text("PO-numero");
                 $tr.append($td);
                 $td = $("<td hidden>");
                 var $textbox = $("<input>").attr("id", "txtPO").attr("type", "text").attr("value", ($('#txtPO1').val()));
                 $td.append($textbox);
                 $tr.append($td)
-
+                //viite
+                var $td = $("<td hidden>").text("Viite");
+                $tr.append($td);
+                $td = $("<td hidden>");
+                var $textbox = $("<input>").attr("id", "txtref").attr("type", "text").attr("value", ($('#ref').val()));
+                $td.append($textbox);
+                $tr.append($td)
                 //Ean
                 var $td = $("<td>").text("EAN ");
                 $tr.append($td);
@@ -191,10 +202,11 @@
                 $("#tblPO tr").each(function () {
 
                     var po = $(this).find("#txtPO").val();
+                    var ref = $(this).find("#txtref").val();
                     var EAN = $(this).find("#txtEAN").val();
                     var Amount = $(this).find("#txtAmount").val();
                     //Lisää rivit sivulle #outputTable -tauluun
-                    div.append(lineNo + ". PO: " + po + ", EAN: " + EAN + ", Määrä: " + Amount);
+                    div.append(lineNo + ". PO: " + po + ", Viite: " + ref +", EAN: " + EAN + ", Määrä: " + Amount);
                     div.append("<br>");
 
                     //luo muuttuja ajax-tallennusta varten
@@ -203,6 +215,7 @@
                         q_MessageNumber: '100',
                         Bestnr: po,
                         RowCreatedDt: getDate(),
+                        levordernr: ref,
                     }
                       //luo muuttuja ajax-tallennusta varten
                     var bpform = {

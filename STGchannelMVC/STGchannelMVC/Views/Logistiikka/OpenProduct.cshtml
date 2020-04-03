@@ -1,0 +1,331 @@
+﻿
+@{
+    ViewBag.Title = "OpenProduct";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Tuoteavaus</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <h1>Tuoteavaus</h1>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="productname"
+                       class="col-xs-3 control-label">Tuotteen nimi</label>
+                <div class="col-xs-7">
+                    <input type="text" class="form-control" id="productname" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ean" class="col-xs-3 control-label">EAN</label>
+                <div class="col-xs-7">
+                    <input type="text" class="form-control" id="ean" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="author" class="col-xs-3 control-label">Tekijä</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="author">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price" class="col-xs-3 control-label">Hinta</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="price">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mediatype" class="col-xs-3 control-label">Mediatyyppi</label>
+                <div class="col-xs-7">
+                    <div class="dropdown">
+                        <select class="btn button1" type="button" data-toggle="dropdown" id="mediatype" required>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="matgrp" class="col-xs-3 control-label">MaterialGroup</label>
+                <div class="col-xs-7">
+                    <div class="dropdown">
+                        <select class="btn button1" type="button" data-toggle="dropdown" id="matgrp" required>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="itemgrp" class="col-xs-3 control-label">ItemGroup</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="itemgrp">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="edition" class="col-xs-3 control-label">Painos</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="edition">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="publdate" class="col-xs-3 control-label">Julkaisupäivä</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="publdate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="library" class="col-xs-3 control-label">Kirjastoluokka</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="library">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="publyear" class="col-xs-3 control-label">Julkaisuvuosi</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="publyear">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="size" class="col-xs-3 control-label">Sivumäärä</label>
+                <div class="col-xs-7">
+                    <input type="text"
+                           class="form-control"
+                           id="size">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tax" class="col-xs-3 control-label header">Vero</label>
+                <div class="col-xs-7">
+                    <div class="custom-control custom-checkbox" id="tax">
+                        <label>
+                            <input type="checkbox" value="0" />
+                            0%
+                        </label>
+                        <label>
+                            <input type="checkbox" value="3" />
+                            10%
+                        </label>
+                        <label>
+                            <input type="checkbox" value="2" />
+                            14%
+                        </label>
+                        <label>
+                            <input type="checkbox" value="1" />
+                            24%
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status" class="col-xs-3 control-label header">Status</label>
+                <div class="col-xs-7">
+                    <div class="custom-control custom-checkbox" id="status">
+                        <label>
+                            <input type="checkbox" value="02" />
+                            Julkaistu
+                        </label>
+                        <label>
+                            <input type="checkbox" value="01" />
+                            Ei julkaistu
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lang" class="col-xs-3 control-label header">Kieli</label>
+                <div class="col-xs-7">
+                    <div class="custom-control custom-checkbox" id="lang">
+                        <label>
+                            <input type="checkbox" value="suomi" />
+                            Suomi
+                        </label>
+                        <label>
+                            <input type="checkbox" value="ruotsi" />
+                            Ruotsi
+                        </label>
+                        <label>
+                            <input type="checkbox" value="englanti" />
+                            Englanti
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="save" class="col-sm-3 control-label"></label>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="col-sm-3 form-group">
+                            <button type="submit" id="save" class="btn button1">Tallenna</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var user = @HttpContext.Current.User.Identity.Name;
+
+            //luodaan muuttujat ja niille kohteet
+            var $EAN = $('#ean');
+            var $Lagstalle = $('#lagstalle');
+            var $ProfitCenter = $('#profitcenter');
+            var $Matgrp = $('#matgrp');
+            var $Mediatype = $('#mediatype');
+            var $Price = $('#price');
+            var $Tax = $('#tax');
+            var $Status = $('#status');
+            var $Edition = $('#edition');
+            var $Publdate = $('#publdate');
+            var $Library = $('#library');
+            var $Author = $('#author');
+            var $Productname = $('#productname');
+            var $Lang = $('#lang');
+            var $Publyear = $('#publyear');
+            var $Size = $('#size');
+            var $Itemgrp = $('#itemgrp');
+
+
+            //Lisätään Ajax-kutsun hakemat asiakkaat sivulle ja aakkostetaan
+            function addMediatype(media) {
+                var mediatype = media.ArtKatBeskr;
+                var mediavalue = media.ArtKat;
+
+                $Mediatype.append('<option>' + mediavalue + '</option>');
+
+            }
+            //Ajax-kutsu /api/mediatype
+            $.ajax({
+                type: 'GET',
+                url: '/api/mediatypes',
+                dataType: 'json',
+                success: function (medias) {
+                    $.each(medias, function (i, media) {
+                        if (media.ForetagKod == "3000") {
+                            addMediatype(media);
+                        }
+                    });
+                },
+                error: function () {
+                    alert: ('Virhe ladattaessa mediatyyppejä')
+                }
+            });
+            //lisätään Ajax-kutsun hakemat työt sivulle ja aakkostetaan
+            function addMatgrp(matgrp) {
+
+                var matgrp1 = matgrp.q_material_group1;
+                $Matgrp.append('<option>' + matgrp1 + ' </option>');
+
+            }
+            //Ajax-kutsu /api/q_material_group
+            $.ajax({
+                type: 'GET',
+                url: '/api/q_material_group',
+                dataType: 'json',
+                success: function (matgrps) {
+                    $.each(matgrps, function (i, matgrp) {
+                        if (matgrp.ForetagKod == "3000") {
+                            addMatgrp(matgrp);
+                           
+                        }
+                    });
+                },
+                error: function () {
+                    alert: ('Virhe ladattaessa materialgroupia')
+                }
+            });
+             function getTax() {
+                var taxArray = $("#tax input:checked").map(function () {
+                    return this.value;
+                }).get();
+                return taxArray;
+            }
+            function getStatus() {
+                var StatusArray = $("#status input:checked").map(function () {
+                    return this.value;
+                }).get();
+                return StatusArray;
+            }
+            function getLanguage() {
+                var langArray = $("#lang input:checked").map(function () {
+                    return this.value;
+                }).get();
+                return langArray;
+            }
+            //Tallenna muokatut tiedot tietokantaan
+            $('#save').click(function (e) {
+                e.preventDefault();
+
+                var addproduct = {
+                    foretagkod: 3000,
+                    lagstalle: 3000,
+                    q_profit_center: user,
+                    q_material_group: $Matgrp.val(),
+                    q_isbn_no: $EAN.val(),
+                    q_sap_item_no: $EAN.val(),
+                    artnr: $EAN.val(),
+                    artbeskr: $Productname.val(),
+                    q_artkat: $Mediatype.val(),
+                    artlistpris: $Price.val(),
+                    momskod: getTax(),
+                    itemstatuscode: getStatus(),
+                    q_wsoy_libraryclass: $Library.val(),
+                    ar_q_edition_counter: $Edition.val(),
+                    q_publ_date: $Publdate.val(),
+                    q_author: $Author.val(),
+                    q_print_year: $Publyear.val(),
+                    q_size: $Size.val(),
+                    q_language: getLanguage(),
+                    varugruppkod: $Itemgrp.val(),
+                    artkalkber: '0.00',
+                    artkalkpris: '0.00',
+                    artvikt: '0.001',
+                    };
+
+                $.ajax({
+                    method: 'post',
+                    url: '/api/q_Customer_items_2_JeevesAPI/',
+                    data: addproduct,
+                    success: function () {
+                        alert('Tiedot tallennettu');
+                        location.reload();
+                    },
+                    error: function (jqXHR) {
+                            console.log('Virhe. Tietoja ei tallennettu ');
+                            console.log(jqXHR.responseText);
+                     }
+                });
+            });
+        });
+      
+    </script>
+    }

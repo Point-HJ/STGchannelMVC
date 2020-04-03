@@ -75,6 +75,11 @@ namespace STGchannelMVC.Controllers
             public int foretagkod { get; set; }
 
         }
+
+        public ActionResult OpenProduct()
+        {
+            return View();
+        }
     }
 
 }
