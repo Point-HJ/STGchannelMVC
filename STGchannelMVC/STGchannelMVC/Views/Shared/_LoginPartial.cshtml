@@ -1,4 +1,29 @@
-﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+﻿    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+         var cartuser = @HttpContext.Current.User.Identity.Name;
+
+        // ostoskorin tiedot navigointipaneeliin
+        $.ajax({
+            type: 'GET',
+            url: '/api/CartsAPI',
+            dataType: 'json',
+        }).then(function (data) {
+            let counter = 0;
+            $.each(data, function (index, val) {
+                if (val.CompanyID == cartuser && val.IsInCart == true) {
+                    counter = counter + 1;
+                }
+            });
+            $('#cartsum').empty().append(counter);
+        })
+        });
+    </script>
+
+
+
+
 @using Microsoft.AspNet.Identity
 @if (User.Identity.IsAuthenticated)
 {
@@ -7,18 +32,18 @@
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav navbar-nav navbar-right" }))
         {
             @Html.AntiForgeryToken()
-            <input id="search" type="text" placeholder="Etsi / Söka..">
+            <input class="nav navbar-nav" id="search" type="text" placeholder="Etsi / Söka..">
 
-           
+
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @Html.ActionLink("Hei " + User.Identity.GetUserName() + "!", "Index", "NV", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
-                <li><a href="/NV/info"><span class="glyphicon glyphicon-info-sign"></span></a></li>
+
                 <li><a href="/NV/Index"><span class="flag-icon flag-icon-fi" style="height: 20px "></span>  Valikoima / Utbudet</a></li>
                 <li><a href="/NV/IndexSVE"><span class="flag-icon flag-icon-se" style="height:20px"></span>  Valikoima / Utbudet</a></li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos</a></li>
-                <li>@Html.ActionLink("Tilaushistoria", "History", "NV")</li>
+                <li>@Html.ActionLink("Tilaushistoria / Orderhistorik", "History", "NV")</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut</a></li>
                 <li><a href="/NV/shoppingcart"><span class="fa fa-shopping-cart" style="font-size:20px"></span>    <span id="cartsum"></span> kpl</a></li>
 
 
@@ -33,12 +58,29 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Logistiikka", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut</a></li>
             </ul>
         }
     }
+
+    if (User.IsInRole("Admin, SuperAdmin"))
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+            </ul>
+        }
+    }
+
+
+
 }
 else
 {

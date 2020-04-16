@@ -1,25 +1,28 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+
 
 <div class="jumbotron">
-    <h1>STGchannel</h1>
-    <p class="lead">Tervetuloa!</p>
+    <h1>STGchannel.fi</h1>
+    @*<p class="lead">Tervetuloa</p>*@
     @*<p><a href="Account/Login" class="btn btn-primary btn-lg">Kirjaudu sisään &raquo;</a></p>*@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+     <div class="col-md-3"></div>
+         
+    <div class="col-md-3">
         <h2></h2>
         <p>
-           Näytevalikoimaan pääset tästä
         </p>
-        <p><a class="btn btn-default" href="/NV/Index">Klikkaa tästä &raquo;</a></p>
+        <p><a class="btn btn-default btn-lg" href="/NV/Index"> Näytevalikoima &raquo;</a></p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h2></h2>
-        <p>Logistiikka-asiakkaiden sivustolle pääset tästä</p>
-        <p><a class="btn btn-default" href="/Logistiikka/Index">Klikkaa tästä &raquo;</a></p>
+        <p></p>
+        <p><a class="btn btn-default btn-lg" href="/Logistiikka/Index">Logistiikka-asiakkaiden sivusto &raquo;</a></p>
     </div>
-  
+
 </div>
+@section scripts{
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+}

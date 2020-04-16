@@ -190,7 +190,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsAPIController.cs" />
-    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\MediatypesController.cs" />
     <Compile Include="Controllers\q_Customer_items_2_JeevesAPIController.cs" />
     <Compile Include="Controllers\q_Customer_items_2_JeevesController.cs" />
@@ -445,11 +444,6 @@
     <Content Include="Views\NV\Info.cshtml" />
     <Content Include="Views\Logistiikka\AddPO.cshtml" />
     <Content Include="Views\Logistiikka\OpenProduct.cshtml" />
-    <Content Include="Views\q_Customer_items_2_Jeeves\Create.cshtml" />
-    <Content Include="Views\q_Customer_items_2_Jeeves\Delete.cshtml" />
-    <Content Include="Views\q_Customer_items_2_Jeeves\Details.cshtml" />
-    <Content Include="Views\q_Customer_items_2_Jeeves\Edit.cshtml" />
-    <Content Include="Views\q_Customer_items_2_Jeeves\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

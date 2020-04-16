@@ -5,7 +5,7 @@
             <div class="form-group">
                 <div class="container">
                     <h3>Tilaushistoria / Orderhistorik</h3>
-                    <table class="table table-bordered" id="selection_table">
+                    <table class="table" id="selection_table">
                         <thead>
                             <tr>
                                 <th hidden>OrderID</th>
@@ -39,6 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.freezeheader.js"></script>
 
     <script>
         $(document).ajaxStart(function () {
@@ -49,10 +50,12 @@
 
         //sivun alustus
         $(document).ready(function () {
+            $('#selection_table').freezeHeader();
+
             var selection = $('#selection');
              var cartuser = @HttpContext.Current.User.Identity.Name;
-           
-         
+
+
             // ostoskorin tiedot
             $.ajax({
                 type: 'GET',
@@ -95,10 +98,25 @@
                     $('#selection_table').append(selection);
                 }
             });
+            //etsi-toiminto
             $("#search").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#selection_table tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                $("table tr").each(function (index) {
+                    if (index !== 0) {
+                        $row = $(this);
+
+                        $row.find('td').each(function () {
+                            var id = $(this).text().toLowerCase();
+                            if (id.indexOf(value) !== 0) {
+                                $row.hide();
+                            }
+                            else {
+                                $row.show();
+                                return false;
+                            }
+                        });
+
+                    }
                 });
             });
 
