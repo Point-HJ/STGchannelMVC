@@ -46,7 +46,7 @@
 }
 @section Scripts {
 
-    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/jqueryval")
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -64,7 +64,7 @@
 
          var cartuser = @HttpContext.Current.User.Identity.Name;
 
-                 //Lataa tietoja -teksti
+          //Lataa tietoja -teksti
         $(document).ajaxStart(function () {
             $("#loading").show();
         }).ajaxStop(function () {

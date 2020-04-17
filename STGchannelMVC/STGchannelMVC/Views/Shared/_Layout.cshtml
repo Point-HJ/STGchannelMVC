@@ -56,7 +56,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="navbar-brand" >STGchannel.fi</a>
+                        <a class="navbar-brand navbar-header" >STGchannel.fi</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="glyphicon glyphicon-info-sign navbar-brand" href="#" id="navbardrop" data-toggle="dropdown">
@@ -70,7 +70,6 @@
                     @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
                     {
                         <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
-                        <li>@Html.ActionLink("NV", "Index", "NV")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

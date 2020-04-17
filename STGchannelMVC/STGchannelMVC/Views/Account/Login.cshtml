@@ -41,8 +41,8 @@
                     </div>
                 </div>
                 @*<p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>*@
+                        @Html.ActionLink("Register as a new user", "Register")
+                    </p>*@
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
@@ -51,9 +51,9 @@
         </section>
     </div>
     <div class="col-md-4">
-       
+
         <section id="socialLoginForm">
-            
+
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
@@ -61,4 +61,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
+
 }

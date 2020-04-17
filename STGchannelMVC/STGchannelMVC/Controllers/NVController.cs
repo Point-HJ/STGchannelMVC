@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace STGchannelMVC.Controllers
 {
-    [Authorize(Roles = "Admin, SuperAdmin, Näytevalikoima-asiakas")]
+    [Authorize(Roles = "SuperAdmin, Näytevalikoima-asiakas")]
     public class NVController : Controller
     {
         private STGchannelEntities db = new STGchannelEntities();

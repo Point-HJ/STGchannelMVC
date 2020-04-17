@@ -13,7 +13,7 @@ using System.Web.Services;
 namespace STGchannelMVC.Controllers
 {
     [System.Web.Script.Services.ScriptService]
-    [Authorize(Roles = "Admin, SuperAdmin, Logistiikka-asiakas")]
+    [Authorize(Roles = "SuperAdmin, Logistiikka-asiakas")]
     public class LogistiikkaController : Controller
     {
         private Test_jvspkkEntities db = new Test_jvspkkEntities();
