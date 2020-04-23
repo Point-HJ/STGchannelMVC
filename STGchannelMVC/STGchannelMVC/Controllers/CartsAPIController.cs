@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using STGchannelMVC.Models;
@@ -24,9 +25,9 @@ namespace STGchannelMVC.Controllers
 
         // GET: api/CartsAPI/5
         [ResponseType(typeof(Cart))]
-        public IHttpActionResult GetCart(int id)
+        public async Task<IHttpActionResult> GetCart(int id)
         {
-            Cart cart = db.Cart.Find(id);
+            Cart cart = await db.Cart.FindAsync(id);
             if (cart == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace STGchannelMVC.Controllers
 
         // PUT: api/CartsAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCart(int id, Cart cart)
+        public async Task<IHttpActionResult> PutCart(int id, Cart cart)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace STGchannelMVC.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace STGchannelMVC.Controllers
 
         // POST: api/CartsAPI
         [ResponseType(typeof(Cart))]
-        public IHttpActionResult PostCart(Cart cart)
+        public async Task<IHttpActionResult> PostCart(Cart cart)
         {
             if (!ModelState.IsValid)
             {
@@ -80,23 +81,23 @@ namespace STGchannelMVC.Controllers
             }
 
             db.Cart.Add(cart);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = cart.OrderID }, cart);
         }
 
         // DELETE: api/CartsAPI/5
         [ResponseType(typeof(Cart))]
-        public IHttpActionResult DeleteCart(int id)
+        public async Task<IHttpActionResult> DeleteCart(int id)
         {
-            Cart cart = db.Cart.Find(id);
+            Cart cart = await db.Cart.FindAsync(id);
             if (cart == null)
             {
                 return NotFound();
             }
 
             db.Cart.Remove(cart);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(cart);
         }

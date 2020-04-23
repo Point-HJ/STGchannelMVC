@@ -1,21 +1,21 @@
-﻿@Scripts.Render("~/bundles/jqueryval")
+﻿
 
 @using (Html.BeginForm())
 {
-    <div class="container">
+    <div class="container-fluid">
         <form class="form-horizontal">
             <div class="form-group">
-                <div class="container">
+                <div class="container" style="max-width: 90%">
                     <h1 id="orderdone"></h1>
                     <h2>Ruotsinkielinen valikoima / Svenska utbudet</h2>
                     <table class="table" id="selection_table">
                         <thead>
                             <tr>
                                 <th hidden>BookID</th>
-                                <th>ISBN <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Tekijä / Författare <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Nimi / Titel <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Kustantaja / Förlag <span class="glyphicon glyphicon-sort"></span></th>
+                                <th>ISBN <span class="fa fa-sort"></span></th>
+                                <th>Tekijä / Författare <span class="fa fa-sort"></span></th>
+                                <th>Nimi / Titel <span class="fa fa-sort"></span></th>
+                                <th>Kustantaja / Förlag <span class="fa fa-sort"></span></th>
                                 <th>Hinta / Pris (alv 0%) </th>
                                 <th></th>
                             </tr>
@@ -26,15 +26,15 @@
                 <br>
                 <br>
                 <br>
-                <div class="form-group">
-                    <div class="container">
-                        <div class="row col-md-8" id="loading">
-                            <h2>
-                                Lataa tietoja, odota hetki / Uppdaterar uppgifter, vänta en stund
-                            </h2>
+                @*<div class="form-group">
+                        <div class="container">
+                            <div class="row col-md-8" id="loading">
+                                <h2>
+                                    Lataa tietoja, odota hetki / Uppdaterar uppgifter, vänta en stund
+                                </h2>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div>*@
             </div>
         </form>
     </div>
@@ -43,40 +43,46 @@
 @section Scripts {
 
     @Scripts.Render("~/bundles/jqueryval")
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    @Scripts.Render("~/bundles/jquery")
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.freezeheader.js"></script>
-    <script>
-           $(document).ready(function () {
-               $('#selection_table').freezeHeader();
-             var cartuser = @HttpContext.Current.User.Identity.Name;
 
-                 //Lataa tietoja -teksti
-        $(document).ajaxStart(function () {
-            $("#loading").show();
-        }).ajaxStop(function () {
-            $("#loading").hide('slow');
-        });
+
+    @*<script src="~/Scripts/jquery.freezeheader.js"></script>*@
+    <script>
+        $(document).ready(function () {
+
+            //$('#selection_table').freezeHeader();
+
+
+         var cartuser = @HttpContext.Current.User.Identity.Name;
+
+        ////  Lataa tietoja -teksti
+        //$(document).ajaxStart(function () {
+        //    $("#loading").show();
+        //}).ajaxStop(function () {
+        //    $("#loading").hide('slow');
+        //});
 
                  // ostoskorin tiedot
                 $.ajax({
-                type: 'GET',
-                url: '/api/CartsAPI',
-                dataType: 'json',
-
-                 }).then(function (data) {
+                    type: 'GET',
+                    url: '/api/Cart_NotSentToJvs',
+                    dataType: 'json',
+                  }).then(function (data) {
                     let counter = 0;
                     $.each(data, function (index, val) {
-
                         if (val.CompanyID == cartuser && val.IsInCart == true) {
                              counter = counter + 1;
                     }
-                   });
-                  $('#cartsum').empty().append(counter);
-
+                       });
+                      $('#cartsum').empty().append(counter);
                   })
 
                     $.ajax({
@@ -96,40 +102,33 @@
                                         "<td>" + val.BookName + "</td>" +
                                         "<td>" + val.Publisher + "</td>" +
                                         "<td>" + val.Price + "€ </td>" +
-                                        "<td><a href='#'><span class='glyphicon glyphicon-shopping-cart' data-id=" + val.ISBN + "></span></a></td>" +
+                                        "<td><a href='#'><span class='fa fa-shopping-cart' data-id=" + val.ISBN + "></span></a></td>" +
                                         '</tr>';
 
-                                    // Show which rows already in cart green-color
+                                    // Show which rows already in cart green-color or hides cart from already ordered itemrows
                                     $(function () {
                                         $.ajax({
                                             type: 'GET',
-                                            url: '/api/cartsAPI',
+                                            url: '/api/Cart_NotSentToJvs',
                                             dataType: 'json',
                                             success: function (cart) {
                                                 $.each(cart, function (i, cartdata) {
                                                     if (cartdata.CompanyID == cartuser && cartdata.IsInCart == true && cartdata.ISBN == val.ISBN) {
                                                         if (val.ISBN == cartdata.ISBN) {
-                                                            $(".glyphicon-shopping-cart[data-id=" + val.ISBN + "]").css("color", "#29d646");
+                                                            $(".fa-shopping-cart[data-id=" + val.ISBN + "]").css("color", "#29d646");
                                                         }
                                                     }
-                                                })
-                                            }
-                                        })
-                                    });
-                                    // Show which rows already in ordered gray-color
-                                    $(function () {
-                                        $.ajax({
-                                            type: 'GET',
-                                            url: '/api/cartsAPI',
-                                            dataType: 'json',
-                                            success: function (cart) {
-                                                $.each(cart, function (i, cartdata) {
                                                     if (cartdata.CompanyID == cartuser && cartdata.IsInCart == false && cartdata.ISBN == val.ISBN) {
                                                         if (val.ISBN == cartdata.ISBN) {
-                                                            $(".glyphicon-shopping-cart[data-id=" + val.ISBN + "]").hide();
+                                                            $(".fa-shopping-cart[data-id=" + val.ISBN + "]").hide();
                                                         }
                                                     }
                                                 })
+                                            },
+                                              error: function (xhr, ajaxOptions, thrownError) {
+                                                console.log(xhr.status);
+                                                console.log(thrownError);
+                                                console.log(xhr.responseText);
                                             }
                                         })
                                     });
@@ -150,7 +149,7 @@
                             }
 
                             //klikatessa ostoskoria, klikatun rivin tiedot etsitään ja tallennetaan ostoskoriin, jos käyttäjä ei ole vielä tehnyt tilausta
-                            $(".glyphicon-shopping-cart").on("click", function (e) {
+                            $(".fa-shopping-cart").on("click", function (e) {
                                 e.preventDefault();
                                 // ostoskorin tiedot
                                 $(this).css("color", "#29d646");
@@ -162,7 +161,7 @@
                                     success: function (sel) {
                                         $.ajax({
                                             type: 'GET',
-                                            url: '/api/cartsAPI',
+                                            url: '/api/Cart_NotSentToJvs',
                                             dataType: 'json',
                                             success: function (cart) {
                                                 var orderdone = false;
@@ -178,8 +177,8 @@
                                                     if (present == false) {
                                                         var toCart = {
                                                             CompanyID: cartuser,
-                                                            ISBN: sel.ISBN,
                                                             Orderdate: getdate(),
+                                                            ISBN: sel.ISBN,
                                                             BookName: sel.BookName,
                                                             Author: sel.Author,
                                                             Publisher: sel.Publisher,
@@ -195,8 +194,8 @@
                                                                 // ostoskorin tiedot
                                                                 $.ajax({
                                                                     type: 'GET',
-                                                                    url: '/api/CartsAPI',
-                                                                    dataType: 'json',
+                                                                    url: '/api/Cart_NotSentToJvs',
+                                                                    async: true,
                                                                 }).then(function (data) {
                                                                     let counter = 0;
                                                                     $.each(data, function (index, val) {
@@ -205,6 +204,7 @@
                                                                         }
                                                                     });
                                                                     $('#cartsum').empty().append(counter);
+
                                                                 })
                                                             },
                                                             error: function () {
@@ -238,32 +238,33 @@
             //    });
             //});
 
-               $("#search").on("keyup", function () {
-                   var value = $(this).val().toLowerCase();
-                   $("table tr").each(function (index) {
-                       if (index !== 0) {
-                           $row = $(this);
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("table tr").each(function (index) {
+                    if (index !== 0) {
+                        $row = $(this);
 
-                           $row.find('td').each(function () {
-                               var id = $(this).text().toLowerCase();
-                               if (id.indexOf(value) !== 0) {
-                                   $row.hide();
-                               }
-                               else {
-                                   $row.show();
-                                   return false;
-                               }
-                           });
+                        $row.find('td').each(function () {
+                            var id = $(this).text().toLowerCase();
+                            if (id.indexOf(value) !== 0) {
+                                $row.hide();
+                            }
+                            else {
+                                $row.show();
+                                return false;
+                            }
+                        });
 
-                       }
-                   });
-               });
+                    }
+                });
+            });
 
             //taulun sorttaus
             const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
             const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
                 v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
             )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
             document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
                 const table = th.closest('#selection_table')
                 Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
@@ -276,4 +277,6 @@
     </script>
 
 }
+
+
 

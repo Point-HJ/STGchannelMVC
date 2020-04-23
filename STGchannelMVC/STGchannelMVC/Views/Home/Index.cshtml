@@ -1,28 +1,31 @@
 ﻿
+@using (Html.BeginForm())
+{
 
-
-<div class="jumbotron">
-    <h1>STGchannel.fi</h1>
-    @*<p class="lead">Tervetuloa</p>*@
-    @*<p><a href="Account/Login" class="btn btn-primary btn-lg">Kirjaudu sisään &raquo;</a></p>*@
-</div>
-
-<div class="row">
-     <div class="col-md-3"></div>
-         
-    <div class="col-md-3">
-        <h2></h2>
-        <p>
-        </p>
-        <p><a class="btn btn-default btn-lg" href="/NV/Index"> Näytevalikoima &raquo;</a></p>
-    </div>
-    <div class="col-md-3">
-        <h2></h2>
-        <p></p>
-        <p><a class="btn btn-default btn-lg" href="/Logistiikka/Index">Logistiikka-asiakkaiden sivusto &raquo;</a></p>
+    <div class="jumbotron">
+        <h1>STGchannel.fi</h1>
     </div>
 
-</div>
-@section scripts{
-    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+            <p><a class="btn btn-lg" href="/NV/Index"> Näytevalikoima &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <p><a class="btn btn-lg" href="/Logistiikka/Index">Logistiikka-asiakkaiden sivusto &raquo;</a></p>
+        </div>
+
+    </div>
 }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
+    }

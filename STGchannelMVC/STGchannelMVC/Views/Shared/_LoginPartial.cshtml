@@ -1,50 +1,67 @@
-﻿    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
-    <script>
-        $(document).ready(function () {
-         var cartuser = @HttpContext.Current.User.Identity.Name;
-
-        // ostoskorin tiedot navigointipaneeliin
-        $.ajax({
-            type: 'GET',
-            url: '/api/CartsAPI',
-            dataType: 'json',
-        }).then(function (data) {
-            let counter = 0;
-            $.each(data, function (index, val) {
-                if (val.CompanyID == cartuser && val.IsInCart == true) {
-                    counter = counter + 1;
-                }
-            });
-            $('#cartsum').empty().append(counter);
-        })
-        });
-    </script>
-
-
+﻿
 
 
 @using Microsoft.AspNet.Identity
+
+
 @if (User.Identity.IsAuthenticated)
+
+
+
 {
+    @section scripts{
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link href="~/Content/MyStyle.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
+
+        <script>
+        $(document).ready(function () {
+            var cartuser = @HttpContext.Current.User.Identity.Name;
+
+            // ostoskorin tiedot navigointipaneeliin
+            $.ajax({
+                type: 'GET',
+                url: '/api/CartsAPI',
+                dataType: 'json',
+            }).then(function (data) {
+                let counter = 0;
+                $.each(data, function (index, val) {
+                    if (val.CompanyID == cartuser && val.IsInCart == true) {
+                        counter = counter + 1;
+                    }
+                });
+                $('#cartsum').empty().append(counter);
+            })
+        });
+        </script>
+    }
+
     if (User.IsInRole("Näytevalikoima-asiakas") || User.IsInRole("SuperAdmin"))
     {
-        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav navbar-nav navbar-right" }))
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav justify-content-end ml-auto" }))
         {
             @Html.AntiForgeryToken()
-            <input class="nav navbar-nav" id="search" type="text" placeholder="Etsi / Söka..">
 
 
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    @Html.ActionLink("Hei " + User.Identity.GetUserName() + "!", "Index", "NV", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    @Html.ActionLink("Hei " + User.Identity.GetUserName() + "!", null, null, null, new { @class = "nav-link" })
                 </li>
+                <li>
+                    <input id="search" type="text" placeholder="Etsi / Söka..">
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/NV/Index"><span class="flag-icon flag-icon-fi" style="height: 20px "></span>  Valikoima / Utbudet  </a></li>
+                <li class="nav-item"><a class="nav-link" href="/NV/IndexSVE"><span class="flag-icon flag-icon-se" style="height:20px"></span>  Valikoima / Utbudet  </a></li>
+                <li class="nav-item">@Html.ActionLink("Tilaushistoria / Orderhistorik  ", "History", "NV", null, new { @class = "nav-link" })</li>
+                <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut  </a></li>
+                <li class="nav-item"><a class="nav-link" href="/NV/shoppingcart"><span class="fa fa-shopping-cart" style="font-size:20px"></span>    <span id="cartsum"></span> kpl</a></li>
 
-                <li><a href="/NV/Index"><span class="flag-icon flag-icon-fi" style="height: 20px "></span>  Valikoima / Utbudet</a></li>
-                <li><a href="/NV/IndexSVE"><span class="flag-icon flag-icon-se" style="height:20px"></span>  Valikoima / Utbudet</a></li>
-                <li>@Html.ActionLink("Tilaushistoria / Orderhistorik", "History", "NV")</li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut</a></li>
-                <li><a href="/NV/shoppingcart"><span class="fa fa-shopping-cart" style="font-size:20px"></span>    <span id="cartsum"></span> kpl</a></li>
 
 
             </ul>
@@ -52,11 +69,11 @@
     }
     if (User.IsInRole("Logistiikka-asiakas") || User.IsInRole("SuperAdmin"))
     {
-        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav justify-content-end ml-auto" }))
         {
             @Html.AntiForgeryToken()
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav justify-content-end ml-auto">
                 <li>
                     @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Logistiikka", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
@@ -67,11 +84,11 @@
 
     if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
     {
-        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav justify-content-end ml-auto" }))
         {
             @Html.AntiForgeryToken()
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ml-auto">
 
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 
@@ -82,10 +99,12 @@
 
 
 }
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+@*else
+    {
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/Account/Login">Log in</a>
+            </li>
+        </ul>
+    }*@
 

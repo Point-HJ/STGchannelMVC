@@ -29,5 +29,6 @@ namespace STGchannelMVC.Models
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Seasons> Seasons { get; set; }
         public virtual DbSet<Selection> Selection { get; set; }
+        public virtual DbSet<Cart_NotSentToJvs> Cart_NotSentToJvs { get; set; }
     }
 }

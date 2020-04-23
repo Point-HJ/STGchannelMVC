@@ -11,33 +11,16 @@ namespace STGchannelMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data.Entity;
-
-    public class Selection
+    
+    public partial class Selection
     {
-        [Display(Name = "BookID")]
         public int BookID { get; set; }
-
-        [Display(Name = "ISBN")]
         public Nullable<long> ISBN { get; set; }
-
-        [Display(Name = "Author")]
         public string Author { get; set; }
-
-        [Display(Name = "BookName")]
         public string BookName { get; set; }
-
-        [Display(Name = "Publisher")]
         public string Publisher { get; set; }
-
-        [Display(Name = "Price")]
         public Nullable<decimal> Price { get; set; }
-
-       
         public string Season { get; set; }
         public string Language { get; set; }
-
     }
-    
 }

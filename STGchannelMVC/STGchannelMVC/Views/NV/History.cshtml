@@ -1,20 +1,22 @@
 ﻿@using (Html.BeginForm())
 {
-    <div class="container">
+    <div class="container-fluid">
         <form class="form-horizontal">
             <div class="form-group">
-                <div class="container">
+                <div class="container-fluid">
                     <h3>Tilaushistoria / Orderhistorik</h3>
                     <table class="table" id="selection_table">
                         <thead>
                             <tr>
                                 <th hidden>OrderID</th>
-                                <th>Tilauspvm / Orderdatum <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>ISBN <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Tekijä / Författare <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Nimi / Titel <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Kustantaja / Förlag <span class="glyphicon glyphicon-sort"></span></th>
-                                <th>Hinta / Pris (alv 0%)</th>
+                                <th>Tilauspvm / Orderdatum <span class="fa fa-sort"></span></th>
+                                <th>ISBN <span class="fa fa-sort"></span></th>
+                                <th>Tekijä / Författare <span class="fa fa-sort"></span></th>
+                                <th>Nimi / Titel <span class="fa fa-sort"></span></th>
+                                <th>Kustantaja / Förlag <span class="fa fa-sort"></span></th>
+                                <th>Hinta / Pris (alv 0%) <span class="fa fa-sort"></span></th>
+                                <th>Kausi / Säsong <span class="fa fa-sort"></span></th>
+
                             </tr>
                         </thead>
                     </table>
@@ -33,13 +35,15 @@
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="/Content/MyStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.freezeheader.js"></script>
 
     <script>
         $(document).ajaxStart(function () {
@@ -50,7 +54,7 @@
 
         //sivun alustus
         $(document).ready(function () {
-            $('#selection_table').freezeHeader();
+            //$('#selection_table').freezeHeader();
 
             var selection = $('#selection');
              var cartuser = @HttpContext.Current.User.Identity.Name;
@@ -89,7 +93,9 @@
                                 "<td>" + val.Author + "</td>" +
                                 "<td>" + val.BookName + "</td>" +
                                 "<td>" + val.Publisher + "</td>" +
-                                "<td id='price'>" + val.Price + "€ </td>" +
+                            "<td id='price'>" + val.Price + "€ </td>" +
+                            "<td>" + val.Reference + "</td>" +
+
                                 '</tr>';
                         }
 

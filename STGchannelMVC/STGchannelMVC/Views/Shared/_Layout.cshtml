@@ -3,17 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>STGchannel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="/Content/MyStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     @Styles.Render("~/Content/css")
-        @Styles.Render("~/Content/MyStyle.css")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    @Styles.Render("~/Content/MyStyle.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <script src="~/Scripts/Scripts.js"></script>
     <script src="~/Scripts/notify.min.js"></script>
 
@@ -22,61 +21,31 @@
 
 </head>
 <body>
-    @*<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">*@
-    @*<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("STGchannel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>*@
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand navbar-header">STGchannel.fi</a>
 
-    @*<div class="navbar-collapse collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Info </a>
 
-        <ul class="nav navbar-nav">*@
-
-    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
-                        {
-                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
-                            <li>@Html.ActionLink("NV", "Index", "NV")</li>
-                        }
-                    </ul>
-                    @Html.Partial("_LoginPartial")
+                <div class="dropdown-menu">
+                    @*<a class="dropdown-item" href="/NV/Info">Info</a>*@
+                    <a class="dropdown-item" href="/Home/Contact">Yhteystiedot</a>
+                    <a class="dropdown-item" href="https://www.kirjakeskus.fi/tietosuojaseloste/">Tietosuojaseloste</a>
                 </div>
-            </div>
-        </div>
-        </nav>*@
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="navbar-brand navbar-header" >STGchannel.fi</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="glyphicon glyphicon-info-sign navbar-brand" href="#" id="navbardrop" data-toggle="dropdown">
+            </li>
 
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/Home/Contact">Yhteystiedot</a>
-                            <a class="dropdown-item" href="https://www.kirjakeskus.fi/tietosuojaseloste/">Tietosuojaseloste</a>
-                        </div>
-                    </li>
-                    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
-                    {
-                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+            
+            @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+            {
+                <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+            }
+        </ul>
+        @Html.Partial("_LoginPartial")
 
 
-            </div>
-        </div>
+
+
     </nav>
 
 

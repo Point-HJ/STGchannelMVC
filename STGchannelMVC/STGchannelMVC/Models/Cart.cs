@@ -11,30 +11,17 @@ namespace STGchannelMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public class Cart
+    
+    public partial class Cart
     {
         public int OrderID { get; set; }
         public Nullable<System.DateTime> Orderdate { get; set; }
-
-        [Display(Name = "CompanyID")]
         public Nullable<long> CompanyID { get; set; }
-
-        [Display(Name = "ISBN")]
         public Nullable<long> ISBN { get; set; }
-
-        [Display(Name = "BookName")]
         public string BookName { get; set; }
-
-        [Display(Name = "Price")]
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> IsInCart { get; set; }
-
-        [Display(Name = "Author")]
         public string Author { get; set; }
-
-        [Display(Name = "Publisher")]
         public string Publisher { get; set; }
         public Nullable<bool> SentToJvs { get; set; }
         public string Reference { get; set; }

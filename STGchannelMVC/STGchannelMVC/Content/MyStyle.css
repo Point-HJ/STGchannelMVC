@@ -29,24 +29,26 @@ a {
     text-decoration: underline;
 }
 
-.button {
+.btn {
     background-color: #002f40;
     color: white;
     border: 1px solid white;
+   
 }
 
-    .button:hover {
+    .btn:hover {
+      
+        color: white;
+        border: 1px solid white;
+    }
+
+    .btn:focus {
         background-color: #002f40;
         color: white;
     }
 
-    .button:focus {
-        background-color: #002f40;
-        color: white;
-    }
-
-.glyphicon-shopping-cart {
-    color: black;
+.fa-shopping-cart {
+    color: white;
 }
 /* Remove the navbar's default rounded borders and increase the bottom margin */
 .navbar {
@@ -57,7 +59,7 @@ a {
 
 /* Remove the jumbotron's default bottom margin */
 .jumbotron {
-    margin-bottom: 0;
+    margin-bottom: 20px;
     background-color: #002f40;
     color: white;
 }
@@ -70,12 +72,14 @@ footer {
 
 
 .dropdown-menu {
-    background-color: #002f40;
+    background-color: white;
     padding: 10px;
+    color: white;
    
 }
 
 #search {
+    background-color: whitesmoke;
     color: black;
     height: 50px;
 }

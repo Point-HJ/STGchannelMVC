@@ -46,15 +46,48 @@
           <Property Name="Author" Type="varchar" MaxLength="200" />
           <Property Name="BookName" Type="varchar" MaxLength="200" />
           <Property Name="Publisher" Type="varchar" MaxLength="200" />
-          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="money" />
           <Property Name="Season" Type="varchar" MaxLength="20" />
           <Property Name="Language" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'STGchannel.dbo.Cart_NotSentToJvs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cart_NotSentToJvs">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Orderdate" Type="date" />
+          <Property Name="CompanyID" Type="bigint" />
+          <Property Name="ISBN" Type="bigint" />
+          <Property Name="BookName" Type="varchar" MaxLength="200" />
+          <Property Name="Price" Type="money" />
+          <Property Name="IsInCart" Type="bit" />
+          <Property Name="Author" Type="varchar" MaxLength="200" />
+          <Property Name="Publisher" Type="varchar" MaxLength="200" />
+          <Property Name="SentToJvs" Type="bit" />
+          <Property Name="Reference" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityContainer Name="STGchannelModelStoreContainer">
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seasons" EntityType="Self.Seasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Selection" EntityType="Self.Selection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart_NotSentToJvs" EntityType="Self.Cart_NotSentToJvs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Cart_NotSentToJvs].[OrderID] AS [OrderID], 
+    [Cart_NotSentToJvs].[Orderdate] AS [Orderdate], 
+    [Cart_NotSentToJvs].[CompanyID] AS [CompanyID], 
+    [Cart_NotSentToJvs].[ISBN] AS [ISBN], 
+    [Cart_NotSentToJvs].[BookName] AS [BookName], 
+    [Cart_NotSentToJvs].[Price] AS [Price], 
+    [Cart_NotSentToJvs].[IsInCart] AS [IsInCart], 
+    [Cart_NotSentToJvs].[Author] AS [Author], 
+    [Cart_NotSentToJvs].[Publisher] AS [Publisher], 
+    [Cart_NotSentToJvs].[SentToJvs] AS [SentToJvs], 
+    [Cart_NotSentToJvs].[Reference] AS [Reference]
+    FROM [dbo].[Cart_NotSentToJvs] AS [Cart_NotSentToJvs]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -81,6 +114,7 @@
           <EntitySet Name="Language" EntityType="STGchannelModel.Language" />
           <EntitySet Name="Seasons" EntityType="STGchannelModel.Seasons" />
           <EntitySet Name="Selection" EntityType="STGchannelModel.Selection" />
+          <EntitySet Name="Cart_NotSentToJvs" EntityType="STGchannelModel.Cart_NotSentToJvs" />
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -107,9 +141,25 @@
           <Property Name="Author" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="BookName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Publisher" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Season" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cart_NotSentToJvs">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Orderdate" Type="DateTime" Precision="0" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="ISBN" Type="Int64" />
+          <Property Name="BookName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsInCart" Type="Boolean" />
+          <Property Name="Author" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Publisher" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SentToJvs" Type="Boolean" />
+          <Property Name="Reference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -163,6 +213,23 @@
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="ISBN" ColumnName="ISBN" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart_NotSentToJvs">
+            <EntityTypeMapping TypeName="STGchannelModel.Cart_NotSentToJvs">
+              <MappingFragment StoreEntitySet="Cart_NotSentToJvs">
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="SentToJvs" ColumnName="SentToJvs" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="IsInCart" ColumnName="IsInCart" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

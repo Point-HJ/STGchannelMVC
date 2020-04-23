@@ -23,14 +23,15 @@ namespace STGchannelMVC
             );
 
 
-            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(
-             new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd" });
-
-
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
-            ((DefaultContractResolver)config.Formatters.JsonFormatter.SerializerSettings.ContractResolver).IgnoreSerializableAttribute = true;
+
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(
+           new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd" });
+
+
+            //((DefaultContractResolver)config.Formatters.JsonFormatter.SerializerSettings.ContractResolver).IgnoreSerializableAttribute = true;
         }
 
 
