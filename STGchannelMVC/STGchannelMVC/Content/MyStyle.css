@@ -88,7 +88,7 @@ table, td {
     color: white;
     text-align: center;
     padding: 8px;
-    border: 1px solid white;
+    border: none;
 }
 
 th {
@@ -110,4 +110,10 @@ body {
     margin: auto;
     width: 60%;
     padding: 10px;
+}
+input{
+    color: black
+}
+#pobody {
+    background-image: url('Images/Porvoon kirjakeskus-137 (2).jpg');
 }

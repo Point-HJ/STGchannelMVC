@@ -96,7 +96,7 @@
                         success: function (data) {
                             var selection = '';
                             $.each(data, function (i, val) {
-                                if (val.Language == 'Suomi' && val.Season == '2/2020') {
+                                if (val.Language == 'Suomi' && val.Active == true) {
                                     // luodaan taulukko, johon arvot tuodaan halutuista sarakkeista
                                     selection +=
                                         '<tr>' +

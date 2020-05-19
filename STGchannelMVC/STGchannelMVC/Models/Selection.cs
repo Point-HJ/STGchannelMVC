@@ -22,5 +22,6 @@ namespace STGchannelMVC.Models
         public Nullable<decimal> Price { get; set; }
         public string Season { get; set; }
         public string Language { get; set; }
+        public Nullable<bool> Active { get; set; }
     }
 }

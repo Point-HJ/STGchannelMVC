@@ -11,176 +11,178 @@
 <body>
 
     <div class="container-fluid">
-
-        <h1>Tuoteavaus</h1>
-
+        
         <form class="form-horizontal">
             <div class="form-group">
-                <label for="productname"
-                       class="col-xs-3 control-label">Tuotteen nimi</label>
-                <div class="col-xs-7">
-                    <input type="text" class="form-control" id="productname" required />
+               
+                <div class="col-xs-8">
+                    <h1>Tuoteavaus</h1>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="ean" class="col-xs-3 control-label">EAN</label>
-                <div class="col-xs-7">
-                    <input type="text" class="form-control" id="ean" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="author" class="col-xs-3 control-label">Tekijä</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="author">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="price" class="col-xs-3 control-label">Hinta</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="price">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="mediatype" class="col-xs-3 control-label">Mediatyyppi</label>
-                <div class="col-xs-7">
-                    <div class="dropdown">
-                        <select class="btn button1" type="button" data-toggle="dropdown" id="mediatype" required>
-                            <option></option>
-                        </select>
+                <div class="form-group">
+                    <label for="productname"
+                           class="col-xs-3 control-label">Tuotteen nimi</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" id="productname" required />
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="matgrp" class="col-xs-3 control-label">MaterialGroup</label>
-                <div class="col-xs-7">
-                    <div class="dropdown">
-                        <select class="btn button1" type="button" data-toggle="dropdown" id="matgrp" required>
-                            <option></option>
-                        </select>
+                <div class="form-group">
+                    <label for="ean" class="col-xs-3 control-label">EAN</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" id="ean" required />
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="itemgrp" class="col-xs-3 control-label">ItemGroup</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="itemgrp">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="edition" class="col-xs-3 control-label">Painos</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="edition">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="publdate" class="col-xs-3 control-label">Julkaisupäivä</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="publdate">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="library" class="col-xs-3 control-label">Kirjastoluokka</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="library">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="publyear" class="col-xs-3 control-label">Julkaisuvuosi</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="publyear">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="size" class="col-xs-3 control-label">Sivumäärä</label>
-                <div class="col-xs-7">
-                    <input type="text"
-                           class="form-control"
-                           id="size">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="tax" class="col-xs-3 control-label header">Vero</label>
-                <div class="col-xs-7">
-                    <div class="custom-control custom-checkbox" id="tax">
-                        <label>
-                            <input type="checkbox" value="0" />
-                            0%
-                        </label>
-                        <label>
-                            <input type="checkbox" value="3" />
-                            10%
-                        </label>
-                        <label>
-                            <input type="checkbox" value="2" />
-                            14%
-                        </label>
-                        <label>
-                            <input type="checkbox" value="1" />
-                            24%
-                        </label>
+                <div class="form-group">
+                    <label for="author" class="col-xs-3 control-label">Tekijä</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="author">
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="status" class="col-xs-3 control-label header">Status</label>
-                <div class="col-xs-7">
-                    <div class="custom-control custom-checkbox" id="status">
-                        <label>
-                            <input type="checkbox" value="02" />
-                            Julkaistu
-                        </label>
-                        <label>
-                            <input type="checkbox" value="01" />
-                            Ei julkaistu
-                        </label>
+                <div class="form-group">
+                    <label for="price" class="col-xs-3 control-label">Hinta</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="price">
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="lang" class="col-xs-3 control-label header">Kieli</label>
-                <div class="col-xs-7">
-                    <div class="custom-control custom-checkbox" id="lang">
-                        <label>
-                            <input type="checkbox" value="suomi" />
-                            Suomi
-                        </label>
-                        <label>
-                            <input type="checkbox" value="ruotsi" />
-                            Ruotsi
-                        </label>
-                        <label>
-                            <input type="checkbox" value="englanti" />
-                            Englanti
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="save" class="col-sm-3 control-label"></label>
-                <div class="row">
-                    <div class="col-sm-7">
-                        <div class="col-sm-3 form-group">
-                            <button type="submit" id="save" class="btn button1">Tallenna</button>
+                <div class="form-group">
+                    <label for="mediatype" class="col-xs-3 control-label">Mediatyyppi</label>
+                    <div class="col-xs-7">
+                        <div class="dropdown">
+                            <select class="btn button1" type="button" data-toggle="dropdown" id="mediatype" required>
+                                <option></option>
+                            </select>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="matgrp" class="col-xs-3 control-label">MaterialGroup</label>
+                    <div class="col-xs-7">
+                            <input type="text"
+                                   class="form-control"
+                                   id="matmgrp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itemgrp" class="col-xs-3 control-label">ItemGroup</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="itemgrp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edition" class="col-xs-3 control-label">Painos</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="edition">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="publdate" class="col-xs-3 control-label">Julkaisupäivä</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="publdate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="library" class="col-xs-3 control-label">Kirjastoluokka</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="library">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="publyear" class="col-xs-3 control-label">Julkaisuvuosi</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="publyear">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="size" class="col-xs-3 control-label">Sivumäärä</label>
+                    <div class="col-xs-7">
+                        <input type="text"
+                               class="form-control"
+                               id="size">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tax" class="col-xs-3 control-label header">Vero</label>
+                    <div class="col-xs-7">
+                        <div class="custom-control custom-checkbox" id="tax">
+                            <label>
+                                <input type="checkbox" value="0" />
+                                0%
+                            </label>
+                            <label>
+                                <input type="checkbox" value="3" />
+                                10%
+                            </label>
+                            <label>
+                                <input type="checkbox" value="2" />
+                                14%
+                            </label>
+                            <label>
+                                <input type="checkbox" value="1" />
+                                24%
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="status" class="col-xs-3 control-label header">Status</label>
+                    <div class="col-xs-7">
+                        <div class="custom-control custom-checkbox" id="status">
+                            <label>
+                                <input type="checkbox" value="02" />
+                                Julkaistu
+                            </label>
+                            <label>
+                                <input type="checkbox" value="01" />
+                                Ei julkaistu
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lang" class="col-xs-3 control-label header">Kieli</label>
+                    <div class="col-xs-7">
+                        <div class="custom-control custom-checkbox" id="lang">
+                            <label>
+                                <input type="checkbox" value="suomi" />
+                                Suomi
+                            </label>
+                            <label>
+                                <input type="checkbox" value="ruotsi" />
+                                Ruotsi
+                            </label>
+                            <label>
+                                <input type="checkbox" value="englanti" />
+                                Englanti
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="save" class="col-sm-3 control-label"></label>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="col-sm-3 form-group">
+                                <button type="submit" id="save" class="btn button1">Tallenna</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </form>
-    </div>
+        </div>
 </body>
 </html>
 @section Scripts {

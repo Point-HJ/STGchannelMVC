@@ -6,11 +6,8 @@
 
 @if (User.Identity.IsAuthenticated)
 
-
-
 {
     @section scripts{
-
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -19,6 +16,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
+
+
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/MyStyle.css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/Scripts.js"></script>
+        <script src="~/Scripts/notify.min.js"></script>
+
+
 
         <script>
         $(document).ready(function () {
@@ -61,9 +70,6 @@
                 <li class="nav-item">@Html.ActionLink("Tilaushistoria / Orderhistorik  ", "History", "NV", null, new { @class = "nav-link" })</li>
                 <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut  </a></li>
                 <li class="nav-item"><a class="nav-link" href="/NV/shoppingcart"><span class="fa fa-shopping-cart" style="font-size:20px"></span>    <span id="cartsum"></span> kpl</a></li>
-
-
-
             </ul>
         }
     }
@@ -72,13 +78,48 @@
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav justify-content-end ml-auto" }))
         {
             @Html.AntiForgeryToken()
+            <nav class="navbar navbar-inverse">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Muut palvelut </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="https://portaali.kirjakeskus.fi/">Portaali</a>
+                                <a class="dropdown-item" href="https://www.expak.fi/">Expak</a>
+                                <a class="dropdown-item" href="https://www.bokinfo.fi/suomi/">Bokinfo</a>
+                                <a class="dropdown-item" href="https://www.kirjakeskus.fi">Porvoon Kirjakeskus Oy</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/Logistiikka/Index"><span class="fa fa-home" style="font-size:20px"></span></a></li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Hei " + User.Identity.GetUserName() + "!", null, null, null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut  </a></li>
+                    </ul>
+                </nav>
+            @*<nav class="navbar">
+                <div class="container-fluid">
 
-            <ul class="nav justify-content-end ml-auto">
-                <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Logistiikka", routeValues: null, htmlAttributes: new { title = "Manage" })
-                </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut</a></li>
-            </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Muut palvelut
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://portaali.kirjakeskus.fi/">Portaali</a></li>
+                                <li><a href="https://www.expak.fi/">Expak</a></li>
+                                <li><a href="https://www.bokinfo.fi/suomi/">Bokinfo</a></li>
+                                <li><a href="https://www.kirjakeskus.fi">Porvoon Kirjakeskus Oy</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/Logistiikka/Index"><span class="fa fa-home" style="font-size:20px"></span></a></li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Hei " + User.Identity.GetUserName() + "!", null, null, null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut  </a></li>
+                    </ul>
+                </div>
+            </nav>*@
         }
     }
 
