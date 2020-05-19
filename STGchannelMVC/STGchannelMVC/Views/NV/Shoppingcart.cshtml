@@ -33,6 +33,7 @@
                             @Html.ActionLink("Jatka ostoksia", "Index", "NV")
 
                         </div>
+                        <div class="spinner-border"></div>
                         <div class="col-md-2">
                             <button type="submit" id="send" class="btn button">
                                 Lähetä tilaus / Skicka order
@@ -69,6 +70,12 @@
             var selection = $('#selection');
              var cartuser = @HttpContext.Current.User.Identity.Name;
 
+            //spinneri näyttämään että tallennus on kesken 
+            $(document).ajaxStart(function () {
+                $(".spinner-border").show();
+            }).ajaxStop(function () {
+                $(".spinner-border").hide('slow');
+            });
 
             // ostoskorin tiedot navigointipaneeliin
             $.ajax({
@@ -155,12 +162,14 @@
                             (('' + day).length < 2 ? '0' : '') + day;
                     }
 
-
+                     
 
                     $('#send').click(function (e) {
                         e.preventDefault();
                         var ok = confirm("Haluatko varmasti lähettää tilauksen? Är du säker att du vill avsluta ordern?");
                         if (ok == true) {
+                           
+
                             $.ajax({
                                 type: 'GET',
                                 url: '/api/cartsAPI',
