@@ -48,7 +48,7 @@ namespace STGchannelMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SeasonID,Season,StartDate,StopDate")] Seasons seasons)
+        public ActionResult Create([Bind(Include = "SeasonID,Season,StartDate,StopDate,Reference")] Seasons seasons)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace STGchannelMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SeasonID,Season,StartDate,StopDate")] Seasons seasons)
+        public ActionResult Edit([Bind(Include = "SeasonID,Season,StartDate,StopDate,Reference")] Seasons seasons)
         {
             if (ModelState.IsValid)
             {

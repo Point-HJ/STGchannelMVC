@@ -18,5 +18,6 @@ namespace STGchannelMVC.Models
         public string Season { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> StopDate { get; set; }
+        public string Reference { get; set; }
     }
 }

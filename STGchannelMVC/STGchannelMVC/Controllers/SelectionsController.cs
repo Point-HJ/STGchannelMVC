@@ -49,7 +49,7 @@ namespace STGchannelMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="Admin, SuperAdmin")]
-        public ActionResult Create([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] Selection selection)
+        public ActionResult Create([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language,Active")] Selection selection)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace STGchannelMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, SuperAdmin")]
-        public ActionResult Edit([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language")] Selection selection)
+        public ActionResult Edit([Bind(Include = "BookID,ISBN,Author,BookName,Publisher,Price,Season,Language,Active")] Selection selection)
         {
                      
             if (ModelState.IsValid)

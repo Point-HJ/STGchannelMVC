@@ -197,6 +197,7 @@
     <Compile Include="Controllers\q_Customer_items_2_JeevesAPIController.cs" />
     <Compile Include="Controllers\q_Customer_items_2_JeevesController.cs" />
     <Compile Include="Controllers\q_material_groupController.cs" />
+    <Compile Include="Controllers\SeasonsAPIController.cs" />
     <Compile Include="get_next_tranid.cs">
       <SubType>Component</SubType>
     </Compile>

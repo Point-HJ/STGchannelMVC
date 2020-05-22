@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
@@ -70,7 +71,7 @@
             var selection = $('#selection');
              var cartuser = @HttpContext.Current.User.Identity.Name;
 
-            //spinneri näyttämään että tallennus on kesken 
+            //spinneri näyttämään että tallennus on kesken
             $(document).ajaxStart(function () {
                 $(".spinner-border").show();
             }).ajaxStop(function () {
@@ -161,15 +162,41 @@
                             (('' + month).length < 2 ? '0' : '') + month + '/' +
                             (('' + day).length < 2 ? '0' : '') + day;
                     }
+                    //valikoiman viitetieto Seasons-kannasta tilauksen päivämäärän perusteella
+                    var matchGetReference = [];
+                    function getReferenceByDate(season) {
 
-                     
+                        var startdate = season.StartDate; // MM-DD-YYYY Valikoiman ensimmäinen tilauspäivä
+                        var stopdate = season.StopDate; // MM-DD-YYYY Valikoiman viimeinen tilauspäivä
+                        var ref = season.Reference;
+                        var thisdate = new Date();
+                        //Date.parse jäsentää päivämäärämerkkijonon ja palauttaa millisekuntien lukumäärän päivämäärämerkkijonon ja 1. tammikuuta 1970 keskiyön välillä.
+                        var from = Date.parse(startdate);
+                        var to = Date.parse(stopdate);
+                        var now = Date.parse(thisdate);
+
+                        if (now <= to && now >= from) {
+                            return ref;
+                        }
+                    }
+                    $.ajax({
+                        type: 'GET',
+                        url: '/api/SeasonsAPI',
+                        datatype: 'json',
+                        success: function (data) {
+                            $.each(data, function (i, season) {
+                                var returnRef = getReferenceByDate(season)
+                                if (returnRef != undefined) {
+                                    matchGetReference.push(returnRef);
+                                }
+                            })
+                        }
+                    });
 
                     $('#send').click(function (e) {
                         e.preventDefault();
                         var ok = confirm("Haluatko varmasti lähettää tilauksen? Är du säker att du vill avsluta ordern?");
                         if (ok == true) {
-                           
-
                             $.ajax({
                                 type: 'GET',
                                 url: '/api/cartsAPI',
@@ -190,15 +217,17 @@
                                                 Season: sel.Season,
                                                 IsInCart: false,
                                                 SentToJvs: false,
-                                                Reference: 'NV syksy 2020'
-
+                                                
                                             };
+                                            if (matchGetReference[0] != undefined) {
+                                                cart.Reference = matchGetReference[0];
+                                            }
                                             $.ajax({
                                                 method: 'put',
                                                 url: '/api/cartsAPI/' + cart.OrderID,
                                                 data: JSON.stringify(cart),
                                                 contentType: 'application/json',
-                                                success: function (data) {
+                                                success: function () {
                                                     //console.log('Tilaus tallennettu')
                                                     location.reload();
                                                     localStorage.removeItem('cart');
