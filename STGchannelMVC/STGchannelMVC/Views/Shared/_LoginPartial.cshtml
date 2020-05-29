@@ -96,30 +96,7 @@
                         <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut  </a></li>
                     </ul>
                 </nav>
-            @*<nav class="navbar">
-                <div class="container-fluid">
-
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Muut palvelut
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://portaali.kirjakeskus.fi/">Portaali</a></li>
-                                <li><a href="https://www.expak.fi/">Expak</a></li>
-                                <li><a href="https://www.bokinfo.fi/suomi/">Bokinfo</a></li>
-                                <li><a href="https://www.kirjakeskus.fi">Porvoon Kirjakeskus Oy</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="/Logistiikka/Index"><span class="fa fa-home" style="font-size:20px"></span></a></li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Hei " + User.Identity.GetUserName() + "!", null, null, null, new { @class = "nav-link" })
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kirjaudu ulos / Logga ut  </a></li>
-                    </ul>
-                </div>
-            </nav>*@
+           
         }
     }
 
@@ -128,7 +105,7 @@
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav justify-content-end ml-auto" }))
         {
             @Html.AntiForgeryToken()
-
+            
             <ul class="navbar-nav ml-auto">
 
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>

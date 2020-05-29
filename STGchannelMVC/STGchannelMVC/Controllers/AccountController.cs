@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -55,9 +57,9 @@ namespace STGchannelMVC.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ViewBag.ReturnUrl = returnUrl;
+          //  ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -66,12 +68,13 @@ namespace STGchannelMVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl )
         {
+     
             if (!ModelState.IsValid)
             {
-                return View(model);
-            }
+                    return View(model);
+             }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -79,8 +82,26 @@ namespace STGchannelMVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindAsync(model.CompanyID, model.Password);
+                    var roles = await UserManager.GetRolesAsync(user.Id);
 
-                    return RedirectToLocal(returnUrl);
+                    if (roles.Contains("Admin"))
+                    {
+                        return RedirectToAction("index", "Admin");
+                    }
+                    else if (roles.Contains("Logistiikka-asiakas"))
+                    {
+                        return RedirectToAction("index", "Logistiikka");
+                    }
+                    else if (roles.Contains("Näytevalikoima-asiakas"))
+                    {
+                        return RedirectToAction("index", "NV");
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+
+                    }
 
                 case SignInStatus.LockedOut:
                     return View("Lockout");

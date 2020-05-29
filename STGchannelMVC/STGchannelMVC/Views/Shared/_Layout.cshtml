@@ -38,7 +38,7 @@
             
             @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
             {
-                <li>@Html.ActionLink("Hallinta", "Index", "Admin")</li>
+                <li>@Html.ActionLink("Hallinta", "Index", "Admin", null, new { @class = "nav-link" })</li>
             }
         </ul>
         @Html.Partial("_LoginPartial")

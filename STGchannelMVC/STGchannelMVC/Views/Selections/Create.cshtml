@@ -72,7 +72,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.CheckBoxFor(model => model.Active, new { onchange = "this.value = this.checked", @class = "control-label col-md-2" })
+            @Html.CheckBoxFor(model => model.Active, new { onchange = "this.value = this.checked", @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Active)
         </div>
     </div>
